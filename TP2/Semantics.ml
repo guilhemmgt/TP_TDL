@@ -343,7 +343,16 @@ and
 (* .............................................................................*)
 
 (* ...............A COMPLETER .......................................*)
-ruleRead _env _expr mem = ((ErrorValue UndefinedExpressionError), mem)
+ruleRead _env _expr mem =
+  let (v, m2) = value_of_expr (_expr, mem) _env in
+    match v with
+    | ReferenceValue add ->
+      (
+        match lookforMem add m2 with
+        | Found readv -> (readv, m2)
+        | _ -> (ErrorValue TypeMismatchError, m2)
+      )
+    | _ -> (ErrorValue TypeMismatchError, m2)
 
 and
 (* .............................................................................*)
@@ -351,8 +360,21 @@ and
 (*      -> (ValueType * memory)                                                 *)
 (* .............................................................................*)
 
-ruleWrite _env _refexpr _valexpr mem = ((ErrorValue UndefinedExpressionError),mem)
+ruleWrite _env _refexpr _valexpr mem =
 (* ...............A COMPLETER .......................................*)
+  match _refexpr with
+  | AccessNode refi ->
+    (
+      let (v, m2) = value_of_expr (_valexpr, mem) _env in
+        let (_, m3) = value_of_expr (_refexpr, m2) _env in
+          match lookforMem refi mem with
+          | Found _ ->
+            (
+              (NullValue, (refi, v)::m3)
+            )
+          | _ -> (ErrorValue TypeMismatchError, mem)
+    )
+  | _ -> (ErrorValue TypeMismatchError, mem)
 
 and
 (* .............................................................................*)
@@ -378,7 +400,9 @@ and
 (*       -> (ValueType * memory)                                                *)
 (* .............................................................................*)
 
-ruleReference _env _expr mem = ((ErrorValue UndefinedExpressionError),mem)
+ruleReference _env _expr mem =
 (* ...............A COMPLETER .......................................*)
-
+  let (v, m2) = value_of_expr (_expr, mem) _env in
+    let add = newReference () in
+      (ReferenceValue add, (add, v)::m2)
 ;;

@@ -1,7 +1,7 @@
 open Ast
 open Semantics
 
-let debug = ref false;
+let debug = ref true;
 
 (* ..................................................................*)
 type typeType =

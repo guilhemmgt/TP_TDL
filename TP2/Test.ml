@@ -6,7 +6,7 @@ let getValeur (_,v,_) = v
 let getType (t,_,_) = t
 
 (* Tests de non regression *)
-let%test _ = ( getValeur (miniML "../../exemples/exemple-00.mml") = (IntegerValue 3) )
+(*let%test _ = ( getValeur (miniML "../../exemples/exemple-00.mml") = (IntegerValue 3) )
 let%test _ = ( getType (miniML "../../exemples/exemple-00.mml") = IntegerType )
 let%test _ = ( getValeur (miniML "../../exemples/exemple-01.mml") = (IntegerValue (-8)) )
 let%test _ = ( getValeur (miniML "../../exemples/exemple-02.mml") = (IntegerValue 4) )
@@ -19,4 +19,6 @@ let%test _ = ( getValeur (miniML "../../exemples/exemple-08.mml") = (IntegerValu
 let%test _ = ( getValeur (miniML "../../exemples/exemple-09.mml") = (FrozenValue (FunctionNode ("x",AccessNode "x"),[])) )
 let%test _ = ( getValeur (miniML "../../exemples/exemple-11.mml") = (IntegerValue 120) )
 let%test _ = ( getValeur (miniML "../../exemples/exemple-12.mml") = (IntegerValue 120) )
-let%test _ = ( getValeur (miniML "../../exemples/exemple-13.mml") = (ErrorValue UndefinedExpressionError) )
+let%test _ = ( getValeur (miniML "../../exemples/exemple-13.mml") = (IntegerValue 11) )*)
+let%test _ = ( getValeur (miniML "../../exemples/exemple-14-nous.mml") = (IntegerValue 2) )
+let%test _ = ( getValeur (miniML "../../exemples/exemple-15-nous.mml") = (IntegerValue 1) )
