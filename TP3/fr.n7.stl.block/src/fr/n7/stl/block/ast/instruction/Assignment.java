@@ -20,6 +20,9 @@ import fr.n7.stl.tam.ast.TAMFactory;
  */
 public class Assignment implements Instruction, Expression {
 
+	// I -> id = E;
+	// remplacé par
+	// I -> A = E;
 	protected Expression value;
 	protected AssignableExpression assignable;
 
@@ -48,7 +51,9 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics collect is undefined in Assignment.");
+		boolean aCollect = this.assignable.collectAndBackwardResolve(_scope);
+		boolean vCollect = this.value.collectAndBackwardResolve(_scope);
+		return aCollect && vCollect;
 	}
 
 	/* (non-Javadoc)
@@ -56,7 +61,9 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics resolve is undefined in Assignment.");
+		boolean aResolve = this.assignable.fullResolve(_scope);
+		boolean vResolve = this.value.fullResolve(_scope);
+		return aResolve && vResolve;
 	}
 
 	/* (non-Javadoc)

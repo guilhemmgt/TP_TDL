@@ -57,7 +57,6 @@ public class Block {
 	 * allowed.
 	 */
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
-
 		boolean result = true;
 		for(Instruction instruction : this.instructions){
 			result = result && instruction.collectAndBackwardResolve(_scope);
