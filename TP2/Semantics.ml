@@ -344,13 +344,13 @@ and
 
 (* ...............A COMPLETER .......................................*)
 ruleRead _env _expr mem =
-  let (v, m2) = value_of_expr (_expr, mem) _env in
-    match v with
+  let (add, m2) = value_of_expr (_expr, mem) _env in
+    match add with
     | ReferenceValue add ->
       (
         match lookforMem add m2 with
-        | Found readv -> (readv, m2)
-        | _ -> (ErrorValue TypeMismatchError, m2)
+        | Found v -> (v, m2)
+        | _ -> (ErrorValue (UnknownReferenceError add), m2)
       )
     | _ -> (ErrorValue TypeMismatchError, m2)
 
@@ -362,19 +362,16 @@ and
 
 ruleWrite _env _refexpr _valexpr mem =
 (* ...............A COMPLETER .......................................*)
-  match _refexpr with
-  | AccessNode refi ->
-    (
-      let (v, m2) = value_of_expr (_valexpr, mem) _env in
-        let (_, m3) = value_of_expr (_refexpr, m2) _env in
-          match lookforMem refi mem with
-          | Found _ ->
-            (
-              (NullValue, (refi, v)::m3)
-            )
-          | _ -> (ErrorValue TypeMismatchError, mem)
-    )
-  | _ -> (ErrorValue TypeMismatchError, mem)
+  let (v, m2) = value_of_expr (_valexpr, mem) _env in
+    let (add, m3) = value_of_expr (_refexpr, m2) _env in
+      match add with
+      | ReferenceValue refi ->
+        (
+        match lookforMem refi m3 with
+        | Found _ -> (NullValue, (refi, v)::m3)
+        | _ -> (ErrorValue TypeMismatchError, m3)
+        )
+      | _ -> (ErrorValue TypeMismatchError, m3)
 
 and
 (* .............................................................................*)
@@ -382,8 +379,12 @@ and
 (*      -> (ValueType * memory)                                                 *)
 (* .............................................................................*)
 
-ruleSequence _env _left _right mem = ((ErrorValue UndefinedExpressionError),mem)
+ruleSequence _env _left _right mem =
 (* ...............A COMPLETER .......................................*)
+  let (_, m2) = value_of_expr (_left, mem) _env in
+      let (v, m3) = value_of_expr (_right, m2) _env in
+        (v, m3)
+
 
 and
 (* .............................................................................*)
@@ -391,8 +392,19 @@ and
 (*      -> (ValueType * memory)                                                 *)
 (* .............................................................................*)
 
-ruleWhile _env _cond _body mem = ((ErrorValue UndefinedExpressionError),mem)
+ruleWhile _env _cond _body mem =
 (* ...............A COMPLETER .......................................*)
+  let (condValue, condMem) = value_of_expr (_cond, mem) _env in
+    match condValue with
+    | (BooleanValue true) ->
+      let (bodyValue, bodyMem) = value_of_expr (_body, condMem) _env in
+        (
+        match bodyValue with
+        | NullValue -> value_of_expr (WhileNode (_cond, _body), bodyMem) _env
+        | _ -> (ErrorValue TypeMismatchError, bodyMem)
+        )
+    | (BooleanValue false) -> (NullValue, condMem)
+    | _ -> (ErrorValue TypeMismatchError, mem)
 
 and
 (* .............................................................................*)

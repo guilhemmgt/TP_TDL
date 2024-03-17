@@ -295,7 +295,16 @@ let rec type_of_expr expr env =
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleFunction _env _par _body = ErrorType
+    ruleFunction _env _par _body =
+      let par_type = newVariable() in
+        let f_env = ((_par, par_type)::_env) in
+          let return_type = (type_of_expr _body f_env) in
+            let _, b = unify par_type return_type in
+              if b then
+                FunctionType(par_type, return_type)
+              else
+                ErrorType
+
 
   and
     (* ...............A COMPLETER .......................................*)
