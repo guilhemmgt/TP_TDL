@@ -299,11 +299,7 @@ let rec type_of_expr expr env =
       let par_type = newVariable() in
       let f_env = ((_par, par_type)::_env) in
       let return_type = type_of_expr _body f_env in
-      let _, b = unify par_type return_type in
-      if b then
-        FunctionType(par_type, return_type)
-      else
-        ErrorType
+      FunctionType(par_type, return_type)
 
 
   and
@@ -313,9 +309,9 @@ let rec type_of_expr expr env =
       let _, par_b = unify par_type par_type_var in
       if par_b then
         let fct_type = type_of_expr _fct _env and return_type_var = newVariable() in
-        let _, fct_b = unify fct_type (FunctionType (return_type_var, par_type_var)) in
+        let _, fct_b = unify fct_type (FunctionType (par_type_var, return_type_var)) in
         if fct_b then
-          par_type
+          return_type_var
         else
           ErrorType
       else
@@ -365,7 +361,7 @@ let rec type_of_expr expr env =
       let _, ref_b = unify left_type (ReferenceType type_var) in
       if ref_b then
         let right_type = type_of_expr _right _env in
-        let _, type_b = unify left_type right_type in
+        let _, type_b = unify type_var right_type in
         if type_b then
           UnitType
         else
