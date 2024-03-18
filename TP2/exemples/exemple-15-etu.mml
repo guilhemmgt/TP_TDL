@@ -1,0 +1,10 @@
+let r = ref 1 in
+let b = ref true in
+while ((!r) <= 9) do
+   r := (!r) + 1;
+   if (!b) then
+      b := false
+   else
+      b := true
+done;
+!b

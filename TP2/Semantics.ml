@@ -346,11 +346,11 @@ and
 ruleRead _env _expr mem =
   let (add, m2) = value_of_expr (_expr, mem) _env in
   match add with
-  | ReferenceValue add ->
+  | ReferenceValue add_name ->
     (
-    match lookforMem add m2 with
+    match lookforMem add_name m2 with
     | Found v -> (v, m2)
-    | _ -> (ErrorValue (UnknownReferenceError add), m2)
+    | _ -> (ErrorValue (UnknownReferenceError add_name), m2)
     )
   | (ErrorValue _) as result -> (result, m2)
   | _ -> (ErrorValue TypeMismatchError, m2)

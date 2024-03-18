@@ -6,6 +6,8 @@ let getValeur (_,v,_) = v
 
 let getType (t,_,_) = t
 
+let getMem (_,_,m) = m
+
 (* Tests de non regression *)
 let%test _ = ( getValeur (miniML "../../exemples/exemple-00.mml") = (IntegerValue 3) )
 let%test _ = ( getType (miniML "../../exemples/exemple-00.mml") = IntegerType )
@@ -46,9 +48,20 @@ let%test _ = ( getType (miniML "../../exemples/exemple-12.mml") = IntegerType )
 let%test _ = ( getValeur (miniML "../../exemples/exemple-13.mml") = (IntegerValue 11) )
 let%test _ = ( getType (miniML "../../exemples/exemple-13.mml") = IntegerType )
 
-let%test _ = ( getValeur (miniML "../../exemples/exemple-14-nous.mml") = (IntegerValue 2) )
-let%test _ = ( getType (miniML "../../exemples/exemple-14-nous.mml") = IntegerType )
+let%test _ = ( getType (miniML "../../exemples/exemple-14-etu.mml") = UnitType )
 
-let%test _ = ( getValeur (miniML "../../exemples/exemple-15-nous.mml") = (IntegerValue 1) )
-let%test _ = ( getType (miniML "../../exemples/exemple-15-nous.mml") = IntegerType )
+let%test _ = ( getValeur (miniML "../../exemples/exemple-15-etu.mml") = (BooleanValue false) )
+let%test _ = ( getType (miniML "../../exemples/exemple-15-etu.mml") = BooleanType )
 
+let%test _ = ( getValeur (miniML "../../exemples/exemple-16-etu.mml") = (ErrorValue TypeMismatchError) )
+let%test _ = ( getType (miniML "../../exemples/exemple-16-etu.mml") = ErrorType )
+
+let%test _ = ( getValeur (miniML "../../exemples/exemple-17-etu.mml") = (ErrorValue (UnknownIdentError "x")) )
+let%test _ = ( getType (miniML "../../exemples/exemple-17-etu.mml") = ErrorType )
+
+let%test _ = ( getValeur (miniML "../../exemples/exemple-18-etu.mml") = (ReferenceValue "ref@1") )
+let%test _ = ( getType (miniML "../../exemples/exemple-18-etu.mml") = ReferenceType IntegerType )
+
+let%test _ = ( getValeur (miniML "../../exemples/exemple-19-etu.mml") = (IntegerValue 10) )
+let%test _ = ( getType (miniML "../../exemples/exemple-19-etu.mml") = IntegerType )
+let%test _ = ( getMem (miniML "../../exemples/exemple-19-etu.mml") = ["ref@1", (IntegerValue 10)] )
