@@ -342,29 +342,56 @@ let rec type_of_expr expr env =
     (* ...............A COMPLETER .......................................*)
     ruleRef _env _expr =
       let expr_type = type_of_expr _expr _env in
-      match expr_type with
-      | ErrorType | UnknownType -> ErrorType
-      | _ -> ReferenceType(expr_type)
+      let _, error_b = unify expr_type ErrorType in
+      if error_b then
+        ErrorType
+      else
+        ReferenceType(expr_type)
 
   and
     (* ...............A COMPLETER .......................................*)
     ruleRead _env _expr =
-    let expr_type = type_of_expr _expr _env in
-    match expr_type with
-    | ReferenceType expr_type -> expr_type
-    | _ -> ErrorType
+      let expr_type = type_of_expr _expr _env and type_var = newVariable() in
+      let _, b = unify expr_type (ReferenceType type_var) in
+      if b then
+        type_var
+      else
+        ErrorType
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleWrite _env _left _right = ErrorType
+    ruleWrite _env _left _right =
+      let left_type = type_of_expr _left _env and type_var = newVariable () in
+      let _, ref_b = unify left_type (ReferenceType type_var) in
+      if ref_b then
+        let right_type = type_of_expr _right _env in
+        let _, type_b = unify left_type right_type in
+        if type_b then
+          UnitType
+        else
+          ErrorType
+      else
+        ErrorType
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleSequence _env _left _right = ErrorType
+    ruleSequence _env _left _right =
+      let left_type = type_of_expr _left _env in
+      let _, b = unify left_type UnitType in
+      if b then
+        type_of_expr _right _env
+      else
+        ErrorType
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleWhile _env _cond _body = ErrorType
+    ruleWhile _env _cond _body =
+      let cond_type = type_of_expr _cond _env in
+      let _, b = unify cond_type BooleanType in
+      if b then
+        type_of_expr _body _env
+      else
+        ErrorType
 
 (* ...........fin des regles d'inference..........................................*)
 ;;
