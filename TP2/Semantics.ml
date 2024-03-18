@@ -288,7 +288,7 @@ ruleCallByValue env fexpr pexpr mem =
      match pval with
      | (ErrorValue _) as result -> (result,pmem)
      | _ ->
-	let (fval,fmem) =
+	      let (fval,fmem) =
           value_of_expr (fexpr,pmem) env
         in
          (match fval with

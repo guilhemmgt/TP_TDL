@@ -297,18 +297,31 @@ let rec type_of_expr expr env =
     (* ...............A COMPLETER .......................................*)
     ruleFunction _env _par _body =
       let par_type = newVariable() in
-        let f_env = ((_par, par_type)::_env) in
-          let return_type = (type_of_expr _body f_env) in
-            let _, b = unify par_type return_type in
-              if b then
-                FunctionType(par_type, return_type)
-              else
-                ErrorType
+      let f_env = ((_par, par_type)::_env) in
+      let return_type = type_of_expr _body f_env in
+      let _, b = unify par_type return_type in
+      if b then
+        FunctionType(par_type, return_type)
+      else
+        ErrorType
 
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleCall _env _fct _par = ErrorType
+    ruleCall _env _fct _par =
+      let par_type = type_of_expr _par _env and par_type_var = newVariable() in
+      let _, par_b = unify par_type par_type_var in
+      if par_b then
+        let fct_type = type_of_expr _fct _env and return_type_var = newVariable() in
+        let _, fct_b = unify fct_type (FunctionType (return_type_var, par_type_var)) in
+        if fct_b then
+          par_type
+        else
+          ErrorType
+      else
+        ErrorType
+          
+            
 
   and
     (* ..................................................................*)
@@ -327,11 +340,19 @@ let rec type_of_expr expr env =
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleRef _env _expr = ErrorType
+    ruleRef _env _expr =
+      let expr_type = type_of_expr _expr _env in
+      match expr_type with
+      | ErrorType | UnknownType -> ErrorType
+      | _ -> ReferenceType(expr_type)
 
   and
     (* ...............A COMPLETER .......................................*)
-    ruleRead _env _expr = ErrorType
+    ruleRead _env _expr =
+    let expr_type = type_of_expr _expr _env in
+    match expr_type with
+    | ReferenceType expr_type -> expr_type
+    | _ -> ErrorType
 
   and
     (* ...............A COMPLETER .......................................*)
