@@ -6,9 +6,11 @@ package fr.n7.stl.block.ast.expression;
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.type.CoupleType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Abstract Syntax Tree node for an expression extracting the first component in a couple.
@@ -34,7 +36,7 @@ public class First implements Expression {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return "(fst" + this.target + ")";
+		return "(fst " + this.target + ")";
 	}
 	
 	/* (non-Javadoc)
@@ -42,7 +44,7 @@ public class First implements Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException("Semantics collect undefined in First.");
+		return this.target.collectAndBackwardResolve(_scope);
 	}
 
 	/* (non-Javadoc)
@@ -50,7 +52,7 @@ public class First implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException("Semantics resolve undefined in First.");
+		return this.target.fullResolve(_scope);
 	}
 	
 	/* (non-Javadoc)
@@ -58,7 +60,12 @@ public class First implements Expression {
 	 */
 	@Override
 	public Type getType() {
-		throw new SemanticsUndefinedException("Semantics getType undefined in First.");
+		Type tType = this.target.getType();
+		if (tType instanceof CoupleType) {
+			return ((CoupleType)tType).getFirst();
+		} else {
+			throw new Error ("Typage (First) : " + tType.toString() + " n'est pas un couple");
+		}
 	}
 
 	/* (non-Javadoc)

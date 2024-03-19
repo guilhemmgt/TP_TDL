@@ -50,7 +50,10 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics collect is undefined in Conditional.");
+		boolean condCollect = this.condition.collectAndBackwardResolve(_scope);
+		boolean thenCollect = this.thenBranch.collect(_scope);
+		boolean elseCollect = elseBranch == null ? true : this.elseBranch.collect(_scope); // créer nouveaux scopes ? jsp
+		return condCollect && thenCollect && elseCollect;
 	}
 	
 	/* (non-Javadoc)
@@ -58,7 +61,10 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics resolve is undefined in Conditional.");
+		boolean condResolve = this.condition.fullResolve(_scope);
+		boolean thenResolve = this.thenBranch.resolve(_scope);
+		boolean elseResolve = elseBranch == null ? true : this.elseBranch.resolve(_scope);
+		return condResolve && thenResolve && elseResolve;
 	}
 
 	/* (non-Javadoc)

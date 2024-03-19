@@ -71,7 +71,7 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public Type getType() {
-		throw new SemanticsUndefinedException( "Semantics getType is undefined in Assignment.");
+		return this.assignable.getType();
 	}
 
 	/* (non-Javadoc)
@@ -79,7 +79,9 @@ public class Assignment implements Instruction, Expression {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException( "Semantics checkType is undefined in Assignment.");
+		Type aType = this.assignable.getType();
+		Type vType = this.value.getType();
+		return aType.compatibleWith(vType);
 	}
 	
 	/* (non-Javadoc)
