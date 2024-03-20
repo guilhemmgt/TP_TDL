@@ -756,6 +756,13 @@ class CUP$Parser$actions {
 					} else {
 						System.out.println("Resolve failed." + tds);
 					}
+					/* rajouté */
+					if (bloc.checkType()) {
+						System.out.println("Type succeeded.");
+					} else {
+						System.out.println("Type failed." + tds);
+					}
+					/* rajouté */
 				} else {
 					System.out.println("Collect failed : " + tds);
 				}

@@ -129,7 +129,8 @@ public class VariableDeclaration implements Declaration, Instruction {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException("Semantics checkType is undefined in VariableDeclaration.");
+		return this.type.compatibleWith(this.value.getType());
+		//throw new SemanticsUndefinedException("Semantics checkType is undefined in VariableDeclaration.");
 	}
 
 	/* (non-Javadoc)

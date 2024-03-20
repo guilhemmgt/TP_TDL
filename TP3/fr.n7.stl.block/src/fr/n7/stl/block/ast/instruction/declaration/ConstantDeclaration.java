@@ -107,7 +107,7 @@ public class ConstantDeclaration implements Instruction, Declaration {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException( "Semantics checkType is undefined in ConstantDeclaration.");
+		return this.type.compatibleWith(this.value.getType());
 	}
 
 	/* (non-Javadoc)

@@ -13,6 +13,8 @@ import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.block.ast.type.AtomicType;
+import fr.n7.stl.block.ast.type.Type;
 
 /**
  * Implementation of the Abstract Syntax Tree node for a conditional instruction.
@@ -63,7 +65,7 @@ public class Conditional implements Instruction {
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
 		boolean condResolve = this.condition.fullResolve(_scope);
 		boolean thenResolve = this.thenBranch.resolve(_scope);
-		boolean elseResolve = elseBranch == null ? true : this.elseBranch.resolve(_scope);
+		boolean elseResolve = this.elseBranch == null ? true : this.elseBranch.resolve(_scope);
 		return condResolve && thenResolve && elseResolve;
 	}
 
@@ -72,7 +74,10 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException( "Semantics checkType is undefined in Conditional.");
+		boolean condType = this.condition.getType().compatibleWith(AtomicType.BooleanType);
+		boolean thenType = this.thenBranch.checkType();
+		boolean elseType = this.elseBranch == null ? true : this.elseBranch.checkType();
+		return condType && thenType && elseType;
 	}
 
 	/* (non-Javadoc)

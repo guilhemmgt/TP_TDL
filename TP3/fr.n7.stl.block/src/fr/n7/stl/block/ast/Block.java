@@ -8,6 +8,8 @@ import java.util.List;
 import fr.n7.stl.block.ast.instruction.Instruction;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.scope.Scope;
+import fr.n7.stl.block.ast.scope.SymbolTable;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
@@ -28,6 +30,7 @@ public class Block {
 	 * Sequence of instructions contained in a block.
 	 */
 	protected List<Instruction> instructions;
+	protected HierarchicalScope<Declaration> locals;
 
 	/**
 	 * Constructor for a block.
@@ -58,8 +61,9 @@ public class Block {
 	 */
 	public boolean collect(HierarchicalScope<Declaration> _scope) {
 		boolean result = true;
+		this.locals = new SymbolTable (_scope);
 		for(Instruction instruction : this.instructions){
-			result = result && instruction.collectAndBackwardResolve(_scope);
+			result = result && instruction.collectAndBackwardResolve(locals);
 		}
 		return result;
 		// throw new SemanticsUndefinedException("Semantics collect is undefined in Block.");
@@ -75,7 +79,7 @@ public class Block {
 	public boolean resolve(HierarchicalScope<Declaration> _scope) {
 		boolean result = true;
 		for(Instruction instruction : this.instructions){
-			result = result && instruction.fullResolve(_scope);
+			result = result && instruction.fullResolve(this.locals);
 		}
 		return result;
 		// throw new SemanticsUndefinedException("Semantics resolve is undefined in Block.");
@@ -86,7 +90,12 @@ public class Block {
 	 * @return Synthesized True if the instruction is well typed, False if not.
 	 */	
 	public boolean checkType() {
-		throw new SemanticsUndefinedException("Semantics checkType is undefined in Block.");
+		boolean result = true;
+		for(Instruction instruction : this.instructions){
+			result = result && instruction.checkType();
+		}
+		return result;
+		//throw new SemanticsUndefinedException("Semantics checkType is undefined in Block.");
 	}
 
 	/**

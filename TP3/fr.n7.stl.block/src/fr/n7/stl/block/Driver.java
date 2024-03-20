@@ -13,6 +13,12 @@ class Driver {
 			
 			parser = new Parser( "test-3.txt" );
 			parser.parse();
+			
+			parser = new Parser( "test-4.txt" );
+			parser.parse();
+			
+			parser = new Parser( "test-5.txt" );
+			parser.parse();
 		} else {
 			for (String name : args) {
 				parser = new Parser( name );

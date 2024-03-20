@@ -8,6 +8,7 @@ import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
@@ -40,7 +41,10 @@ public class Iteration implements Instruction {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics collect is undefined in Iteration.");
+		boolean condCollect = condition.collectAndBackwardResolve(_scope);
+		boolean bodyCollect = body.collect(_scope);
+		return condCollect && bodyCollect;
+		//throw new SemanticsUndefinedException( "Semantics collect is undefined in Iteration.");
 	}
 	
 	/* (non-Javadoc)
@@ -48,7 +52,9 @@ public class Iteration implements Instruction {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics resolve is undefined in Iteration.");
+		boolean condResolve = condition.fullResolve(_scope);
+		boolean bodyResolve = body.resolve(_scope);
+		return condResolve && bodyResolve;
 	}
 
 	/* (non-Javadoc)
@@ -56,7 +62,10 @@ public class Iteration implements Instruction {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException( "Semantics checkType is undefined in Iteration.");
+		boolean condType = this.condition.getType().compatibleWith(AtomicType.BooleanType);
+		boolean bodyType = this.body.checkType();
+		return condType && bodyType;
+		// throw new SemanticsUndefinedException( "Semantics checkType is undefined in Iteration.");
 	}
 
 	/* (non-Javadoc)

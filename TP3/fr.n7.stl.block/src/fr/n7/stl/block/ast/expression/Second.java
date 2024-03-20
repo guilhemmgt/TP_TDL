@@ -6,6 +6,7 @@ package fr.n7.stl.block.ast.expression;
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.type.CoupleType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
@@ -42,7 +43,12 @@ public class Second implements Expression {
 	 */
 	@Override
 	public Type getType() {
-		throw new SemanticsUndefinedException("Semantics getType undefined in Second.");
+		Type tType = this.target.getType();
+		if (tType instanceof CoupleType) {
+			return ((CoupleType)tType).getSecond();
+		} else {
+			throw new Error ("Typage (Second) : " + tType.toString() + " n'est pas un couple");
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -50,8 +56,7 @@ public class Second implements Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException("Semantics collect undefined in Second.");
-
+		return this.target.collectAndBackwardResolve(_scope);
 	}
 
 	/* (non-Javadoc)
@@ -59,7 +64,7 @@ public class Second implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException("Semantics resolve undefined in Second.");
+		return this.target.fullResolve(_scope);
 	}
 
 	/* (non-Javadoc)
