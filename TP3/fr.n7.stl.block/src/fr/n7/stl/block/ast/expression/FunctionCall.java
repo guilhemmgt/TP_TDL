@@ -69,7 +69,14 @@ public class FunctionCall implements Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics collect is undefined in FunctionCall.");
+		this.function = (FunctionDeclaration) _scope.get(this.name);
+		
+		boolean funCollect = this.function == null ? true : this.function.collectAndBackwardResolve(_scope);
+		boolean argCollects = true;
+		for (Expression arg : this.arguments) {
+			argCollects = argCollects && arg.collectAndBackwardResolve(_scope);
+		}
+		return funCollect && argCollects;
 	}
 
 	/* (non-Javadoc)
@@ -77,7 +84,11 @@ public class FunctionCall implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics resolve is undefined in FunctionCall.");
+		if (this.function == null) {
+			this.function = (FunctionDeclaration) _scope.get(this.name);
+		}
+		boolean funResolve = this.function.fullResolve(_scope);
+		boolean argResolves = bonne chance pour le prochain tp bg
 	}
 	
 	/* (non-Javadoc)

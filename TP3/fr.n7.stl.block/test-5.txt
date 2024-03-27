@@ -16,7 +16,6 @@ test {
 			const boolean p = false;
 			print p;
 		}
-		print p;
 	}
 	print j;
 }

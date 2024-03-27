@@ -1,0 +1,8 @@
+test {
+	int fonction () {
+		int i = 0;
+		return 3;
+	}
+
+	int res = fonction();
+}

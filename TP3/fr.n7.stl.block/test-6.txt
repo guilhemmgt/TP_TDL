@@ -1,0 +1,6 @@
+test {
+	int i = 1;
+	
+	int j = i==1 ? 2 : 1;
+	float k = i==1 ? 2.0 : 1;
+}

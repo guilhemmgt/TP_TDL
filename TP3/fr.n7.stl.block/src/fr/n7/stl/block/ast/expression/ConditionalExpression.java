@@ -6,9 +6,11 @@ package fr.n7.stl.block.ast.expression;
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Abstract Syntax Tree node for a conditional expression.
@@ -50,7 +52,10 @@ public class ConditionalExpression implements Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics collect is undefined in ConditionalExpression.");
+		boolean condCollect = this.condition.collectAndBackwardResolve(_scope);
+		boolean thenCollect = this.thenExpression.collectAndBackwardResolve(_scope);
+		boolean elseCollect = this.elseExpression.collectAndBackwardResolve(_scope);
+		return condCollect && thenCollect && elseCollect;
 	}
 
 	/* (non-Javadoc)
@@ -58,7 +63,10 @@ public class ConditionalExpression implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "Semantics resolve is undefined in ConditionalExpression.");
+		boolean condResolve = this.condition.fullResolve(_scope);
+		boolean thenResolve = this.thenExpression.fullResolve(_scope);
+		boolean elseResolve = this.elseExpression.fullResolve(_scope);
+		return condResolve && thenResolve && elseResolve;
 	}
 
 	/* (non-Javadoc)
@@ -74,7 +82,16 @@ public class ConditionalExpression implements Expression {
 	 */
 	@Override
 	public Type getType() {
-		throw new SemanticsUndefinedException( "Semantics getType is undefined in ConditionalExpression.");
+		boolean condType = this.condition.getType().compatibleWith(AtomicType.BooleanType);
+		
+		if (!condType) {
+			Logger.warning("Type error in conditional expression : " + this.condition + " parameter " + this.condition.getType() + "\n");
+			return AtomicType.ErrorType;
+		}
+		
+		Type resType = this.thenExpression.getType().merge(this.elseExpression.getType());
+		
+		return resType;
 	}
 
 	/* (non-Javadoc)
