@@ -15,6 +15,7 @@ import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Abstract Syntax Tree node for a function declaration.
@@ -100,7 +101,14 @@ public class FunctionDeclaration implements Instruction, Declaration {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		return this.body.collect(_scope);
+		if(_scope.accepts(this)){
+			_scope.register(this);
+			return this.body.collect(_scope);
+		}
+		else{
+			Logger.error(this.name + " déjà utilisé dans ce scope.");
+			return false;
+		}
 	}
 	
 	/* (non-Javadoc)
@@ -116,7 +124,7 @@ public class FunctionDeclaration implements Instruction, Declaration {
 	 */
 	@Override
 	public boolean checkType() {
-		throw new SemanticsUndefinedException( "Semantics checkType is undefined in FunctionDeclaration.");
+		throw new SemanticsUndefinedException( "on a give up");
 	}
 
 	/* (non-Javadoc)

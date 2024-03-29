@@ -6,7 +6,7 @@ class Driver {
 		Parser parser = null;
 		if (args.length == 0) {
 			
-			int nb_test = 7;
+			int nb_test = 8;
 					
 			int i;
 			for(i=1; i<=nb_test; i++) {

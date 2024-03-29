@@ -112,7 +112,6 @@ public class VariableDeclaration implements Declaration, Instruction {
 			Logger.error(this.name + " déjà utilisé dans ce scope.");
 			return false;
 		}
-		// throw new SemanticsUndefinedException( "Semantics collect is undefined in VariableDeclaration.");
 	}
 
 	/* (non-Javadoc)
@@ -120,8 +119,9 @@ public class VariableDeclaration implements Declaration, Instruction {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		return this.value.fullResolve(_scope);
-		// throw new SemanticsUndefinedException( "Semantics resolve is undefined in VariableDeclaration.");
+		boolean valResolve = this.value.fullResolve(_scope);
+		boolean typeResolve = this.type.resolve(_scope);
+		return valResolve && typeResolve;
 	}
 
 	/* (non-Javadoc)
@@ -130,7 +130,6 @@ public class VariableDeclaration implements Declaration, Instruction {
 	@Override
 	public boolean checkType() {
 		return this.type.compatibleWith(this.value.getType());
-		//throw new SemanticsUndefinedException("Semantics checkType is undefined in VariableDeclaration.");
 	}
 
 	/* (non-Javadoc)

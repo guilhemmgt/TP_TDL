@@ -54,6 +54,7 @@ public class Return implements Instruction {
 	@Override
 	public boolean checkType() {
 		throw new SemanticsUndefinedException("Semantics checkType undefined in Return.");
+		
 	}
 
 	/* (non-Javadoc)

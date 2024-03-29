@@ -70,12 +70,13 @@ public class FunctionCall implements Expression {
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
 		this.function = (FunctionDeclaration) _scope.get(this.name);
-		
+
 		boolean funCollect = this.function == null ? true : this.function.collectAndBackwardResolve(_scope);
 		boolean argCollects = true;
 		for (Expression arg : this.arguments) {
 			argCollects = argCollects && arg.collectAndBackwardResolve(_scope);
 		}
+		
 		return funCollect && argCollects;
 	}
 
@@ -87,8 +88,14 @@ public class FunctionCall implements Expression {
 		if (this.function == null) {
 			this.function = (FunctionDeclaration) _scope.get(this.name);
 		}
+
 		boolean funResolve = this.function.fullResolve(_scope);
-		boolean argResolves = bonne chance pour le prochain tp bg
+		boolean argResolves = true;
+		for (Expression arg : this.arguments) {
+			argResolves = argResolves && arg.fullResolve(_scope);
+		}
+		
+		return funResolve && argResolves;
 	}
 	
 	/* (non-Javadoc)

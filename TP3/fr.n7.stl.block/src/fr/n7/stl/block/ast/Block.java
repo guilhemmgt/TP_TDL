@@ -95,7 +95,6 @@ public class Block {
 			result = result && instruction.checkType();
 		}
 		return result;
-		//throw new SemanticsUndefinedException("Semantics checkType is undefined in Block.");
 	}
 
 	/**
