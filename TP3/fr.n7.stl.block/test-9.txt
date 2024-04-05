@@ -1,3 +1,4 @@
 test {
-	struct Point { int x; int y; };
+	typedef struct Pointi { int x; int y; } Point;
+	Point p = {0,1};
 }

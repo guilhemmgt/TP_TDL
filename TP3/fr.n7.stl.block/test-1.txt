@@ -1,5 +1,5 @@
 test {
 	int i = 1;
 	int j = 2;
-	i = j * 2 + 10;
+	i = j * 2 + 10 + i;
 }

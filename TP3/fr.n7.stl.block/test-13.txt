@@ -1,0 +1,5 @@
+test {
+	boolean v = true;
+	boolean *ptr = &v;
+	int j = *ptr;
+}
