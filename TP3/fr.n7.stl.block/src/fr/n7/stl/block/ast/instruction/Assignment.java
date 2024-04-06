@@ -81,8 +81,9 @@ public class Assignment implements Instruction, Expression {
 	public boolean checkType() {
 		Type aType = this.assignable.getType();
 		Type vType = this.value.getType();
-		System.out.println("Assignement checkType: " + aType + " vs " + vType + " = " + aType.compatibleWith(vType));
-		return aType.compatibleWith(vType);
+		boolean res = aType.compatibleWith(vType) || vType.compatibleWith(aType);
+		System.out.println("CHECKTYPE (assignment): " + aType + " vs " + vType + " = " + res);
+		return res;
 	}
 	
 	/* (non-Javadoc)

@@ -6,13 +6,29 @@ class Driver {
 		Parser parser = null;
 		if (args.length == 0) {
 			
-			int nb_test = 13;
-					
-			int i;
-			for(i=1; i<=nb_test; i++) {
-				String testName = "test-" + Integer.toString(i) + ".txt";
-				parser = new Parser( testName );
-				parser.parse();
+			boolean lancer_tests_vrais = true;
+			boolean lancer_tests_faux = true;
+			
+			int nb_tests_vrais = 15;
+			int nb_tests_faux = 5;
+			
+			if (lancer_tests_vrais) {
+				int i;
+				for(i=1; i<=nb_tests_vrais; i++) {
+					String testName = "test-" + Integer.toString(i) + ".txt";
+					System.out.println("\n=== TEST " + i + " ===");
+					parser = new Parser( testName );
+					parser.parse();
+				}
+			}
+			if (lancer_tests_faux) {
+				int i;
+				for(i=1; i<=nb_tests_faux; i++) {
+					String testName = "faux-test-" + Integer.toString(i) + ".txt";
+					System.out.println("\n=== TEST FAUX " + i + " ===");
+					parser = new Parser( testName );
+					parser.parse();
+				}
 			}
 
 		} else {
