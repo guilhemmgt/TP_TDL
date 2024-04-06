@@ -10,7 +10,7 @@ class Driver {
 			boolean lancer_tests_faux = true;
 			
 			int nb_tests_vrais = 15;
-			int nb_tests_faux = 5;
+			int nb_tests_faux = 6;
 			
 			if (lancer_tests_vrais) {
 				int i;
@@ -27,7 +27,11 @@ class Driver {
 					String testName = "faux-test-" + Integer.toString(i) + ".txt";
 					System.out.println("\n=== TEST FAUX " + i + " ===");
 					parser = new Parser( testName );
-					parser.parse();
+					try {
+						parser.parse();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
 			}
 
