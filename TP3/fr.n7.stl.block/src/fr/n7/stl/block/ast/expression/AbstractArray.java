@@ -3,7 +3,10 @@ package fr.n7.stl.block.ast.expression;
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
+import fr.n7.stl.block.ast.type.ArrayType;
 import fr.n7.stl.block.ast.type.Type;
+import fr.n7.stl.util.Logger;
+import fr.n7.stl.block.ast.type.AtomicType;
 
 /**
  * Common elements between left (Assignable) and right (Expression) end sides of assignments. These elements
@@ -46,7 +49,9 @@ public abstract class AbstractArray implements Expression {
 	 */
 	@Override
 	public boolean collectAndBackwardResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "collect is undefined in Abstract Array.");
+		boolean arrayCollect = this.array.collectAndBackwardResolve(_scope);
+		boolean indexCollect = this.index.collectAndBackwardResolve(_scope);
+		return arrayCollect && indexCollect;
 	}
 
 	/* (non-Javadoc)
@@ -54,7 +59,9 @@ public abstract class AbstractArray implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		throw new SemanticsUndefinedException( "resolve is undefined in Abstract Array.");
+		boolean arrayResolve = this.array.fullResolve(_scope);
+		boolean indexResolve = this.index.fullResolve(_scope);
+		return arrayResolve && indexResolve;
 	}
 	
 	/**
@@ -62,7 +69,13 @@ public abstract class AbstractArray implements Expression {
 	 * @return Synthesized Type of the expression.
 	 */
 	public Type getType() {
-		throw new SemanticsUndefinedException( "getType is undefined in AbstractArray.");
+		Type arrayType = this.array.getType();
+		if (arrayType instanceof ArrayType) {
+			return ((ArrayType)arrayType).getType();
+		} else {
+			Logger.error(arrayType + " n'est pas du type ArrayType");
+			return AtomicType.ErrorType;
+		}
 	}
 
 }

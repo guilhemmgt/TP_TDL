@@ -7,10 +7,10 @@ class Driver {
 		if (args.length == 0) {
 			
 			boolean lancer_tests_vrais = true;
-			boolean lancer_tests_faux = true;
+			boolean lancer_tests_faux = false;
 			
-			int nb_tests_vrais = 15;
-			int nb_tests_faux = 6;
+			int nb_tests_vrais = 17;
+			int nb_tests_faux = 8;
 			
 			if (lancer_tests_vrais) {
 				int i;
