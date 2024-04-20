@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import fr.n7.stl.util.Logger;
+
 /**
  * Implementation of a hierarchical scope using maps.
  * @author Marc Pantel
@@ -64,6 +66,7 @@ public class SymbolTable implements HierarchicalScope<Declaration> {
 	@Override
 	public void register(Declaration _declaration) {
 		if (this.accepts(_declaration)) {
+			System.out.println("REGISTER (symboltable): " + _declaration.getName());
 			this.declarations.put(_declaration.getName(), _declaration);
 		} else {
 			throw new IllegalArgumentException();

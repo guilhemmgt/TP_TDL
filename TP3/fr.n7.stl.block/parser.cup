@@ -24,6 +24,7 @@ import fr.n7.stl.block.ast.scope.*;
 import fr.n7.stl.block.ast.type.*;
 import fr.n7.stl.block.ast.type.declaration.*;
 import fr.n7.stl.util.*;
+import fr.n7.stl.tam.ast.Register;
 
 /* Variables partagées dans les actions de l'analyseur syntaxique. */
 parser code {:
@@ -113,24 +114,31 @@ Program ::= UL_Identificateur:nom Bloc:bloc
 			{: 
 				System.out.println( "Block named : " + nom );
 				System.out.println( bloc ); 
+				
 				SymbolTable tds = new SymbolTable();
+				
 				if (bloc.collect(tds)) {
-					System.out.println("Collect succeeded : " + tds);
+					System.out.println("Collect succeeded.");
+					
 					if (bloc.resolve(tds)) {
 						System.out.println("Resolve succeeded.");
+						
+						if (bloc.checkType()) {
+							System.out.println("Type succeeded.");
+							
+							bloc.allocateMemory(Register.SB, 0);
+							System.out.println("Memory allocated.");
+
+						} else {
+							System.out.println("Type failed.");
+						}
 					} else {
-						System.out.println("Resolve failed." + tds);
+						System.out.println("Resolve failed.");
 					}
-					/* rajouté */
-					if (bloc.checkType()) {
-						System.out.println("Type succeeded.");
-					} else {
-						System.out.println("Type failed." + tds);
-					}
-					/* rajouté */
 				} else {
-					System.out.println("Collect failed : " + tds);
+					System.out.println("Collect failed.");
 				}
+				
 			:}
 		;
 

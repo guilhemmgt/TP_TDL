@@ -1,4 +1,8 @@
 test {
 	int i = j;
 	const int j = 2;
+	
+	if (true) {
+		int k = 0;
+	}
 }

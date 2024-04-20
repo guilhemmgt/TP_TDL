@@ -22,6 +22,7 @@ import fr.n7.stl.block.ast.instruction.declaration.*;
 import fr.n7.stl.block.ast.scope.*;
 import fr.n7.stl.block.ast.type.*;
 import fr.n7.stl.block.ast.type.declaration.*;
+import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.util.*;
 import java_cup.runtime.ComplexSymbolFactory.Location;
 import java_cup.runtime.XMLElement;
@@ -748,24 +749,31 @@ class CUP$Parser$actions {
  
 				System.out.println( "Block named : " + nom );
 				System.out.println( bloc ); 
+				
 				SymbolTable tds = new SymbolTable();
+				
 				if (bloc.collect(tds)) {
-					System.out.println("Collect succeeded : " + tds);
+					System.out.println("Collect succeeded.");
+					
 					if (bloc.resolve(tds)) {
 						System.out.println("Resolve succeeded.");
+						
+						if (bloc.checkType()) {
+							System.out.println("Type succeeded.");
+							
+							bloc.allocateMemory(Register.SB, 0);
+							System.out.println("Memory allocated.");
+
+						} else {
+							System.out.println("Type failed.");
+						}
 					} else {
-						System.out.println("Resolve failed." + tds);
+						System.out.println("Resolve failed.");
 					}
-					/* rajouté */
-					if (bloc.checkType()) {
-						System.out.println("Type succeeded.");
-					} else {
-						System.out.println("Type failed." + tds);
-					}
-					/* rajouté */
 				} else {
-					System.out.println("Collect failed : " + tds);
+					System.out.println("Collect failed.");
 				}
+				
 			
               CUP$Parser$result = parser.getSymbolFactory().newSymbol("Program",0, ((java_cup.runtime.Symbol)CUP$Parser$stack.elementAt(CUP$Parser$top-1)), ((java_cup.runtime.Symbol)CUP$Parser$stack.peek()), RESULT);
             }
