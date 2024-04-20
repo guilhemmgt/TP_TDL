@@ -1,0 +1,4 @@
+test {
+	int i = 5;
+	int j = i;
+}

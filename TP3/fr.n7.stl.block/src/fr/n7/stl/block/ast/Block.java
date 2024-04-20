@@ -104,7 +104,11 @@ public class Block {
 	 * @param _offset Inherited Current offset for the address of the variables.
 	 */	
 	public void allocateMemory(Register _register, int _offset) {
-		throw new SemanticsUndefinedException("Semantics allocateMemory is undefined in Block.");
+		int offset = _offset;
+		for(Instruction instruction : this.instructions){
+			offset += instruction.allocateMemory(_register, offset);
+		}
+		System.out.println("ALLOCATEMEMORY (block): allocated " + (offset - _offset));
 	}
 
 	/**
@@ -114,7 +118,11 @@ public class Block {
 	 * @return Synthesized AST for the generated TAM code.
 	 */
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException("Semantics generateCode is undefined in Block.");
+		Fragment code = _factory.createFragment();
+		for(Instruction instruction : this.instructions){
+			code.append(instruction.getCode(_factory));
+		}
+		return code;
 	}
 
 }

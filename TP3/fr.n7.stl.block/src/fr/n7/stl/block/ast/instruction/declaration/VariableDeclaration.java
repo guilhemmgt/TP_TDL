@@ -12,6 +12,7 @@ import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.tam.ast.TAMInstruction;
 import fr.n7.stl.util.Logger;
 
 /**
@@ -140,7 +141,9 @@ public class VariableDeclaration implements Declaration, Instruction {
 	 */
 	@Override
 	public int allocateMemory(Register _register, int _offset) {
-		throw new SemanticsUndefinedException("Semantics allocateMemory is undefined in VariableDeclaration.");
+		this.register = _register;
+		this.offset = _offset;
+		return this.type.length();
 	}
 
 	/* (non-Javadoc)
@@ -148,7 +151,12 @@ public class VariableDeclaration implements Declaration, Instruction {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException("Semantics getCode is undefined in VariableDeclaration.");
+		Fragment code = _factory.createFragment();
+		code.add(_factory.createPush(this.type.length())); // PUSH
+		code.append(this.value.getCode(_factory)); // ...
+		code.add(_factory.createStore(register, offset, this.type.length())); // STORE
+		
+		return code;
 	}
 
 }

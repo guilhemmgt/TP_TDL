@@ -22,8 +22,10 @@ import fr.n7.stl.block.ast.instruction.declaration.*;
 import fr.n7.stl.block.ast.scope.*;
 import fr.n7.stl.block.ast.type.*;
 import fr.n7.stl.block.ast.type.declaration.*;
-import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.util.*;
+import fr.n7.stl.tam.ast.Register;
+import fr.n7.stl.tam.ast.Fragment;
+import fr.n7.stl.tam.ast.impl.TAMFactoryImpl;
 import java_cup.runtime.ComplexSymbolFactory.Location;
 import java_cup.runtime.XMLElement;
 
@@ -751,6 +753,8 @@ class CUP$Parser$actions {
 				System.out.println( bloc ); 
 				
 				SymbolTable tds = new SymbolTable();
+				TAMFactoryImpl tamFactory = new TAMFactoryImpl();
+				Fragment code = tamFactory.createFragment();
 				
 				if (bloc.collect(tds)) {
 					System.out.println("Collect succeeded.");
@@ -763,7 +767,13 @@ class CUP$Parser$actions {
 							
 							bloc.allocateMemory(Register.SB, 0);
 							System.out.println("Memory allocated.");
-
+							
+							code.append(bloc.getCode(tamFactory));
+							code.add(tamFactory.createHalt());
+							
+							System.out.println("Code generated : ");
+							System.out.println("###");
+							System.out.println(code + "###");
 						} else {
 							System.out.println("Type failed.");
 						}
