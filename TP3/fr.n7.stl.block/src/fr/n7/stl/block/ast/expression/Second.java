@@ -72,7 +72,9 @@ public class Second implements Expression {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException("Semantics getCode undefined in Second.");
+		Fragment code = _factory.createFragment();
+		code.append(this.target.getCode(_factory));
+		return code;
 	}
 
 }
