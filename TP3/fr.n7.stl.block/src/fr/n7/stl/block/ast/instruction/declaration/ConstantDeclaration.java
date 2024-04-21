@@ -115,7 +115,7 @@ public class ConstantDeclaration implements Instruction, Declaration {
 	 */
 	@Override
 	public int allocateMemory(Register _register, int _offset) {
-		throw new SemanticsUndefinedException( "Semantics allocateMemory is undefined in ConstantDeclaration.");
+		return 0;
 	}
 
 	/* (non-Javadoc)
@@ -123,7 +123,9 @@ public class ConstantDeclaration implements Instruction, Declaration {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException( "Semantics getCode is undefined in ConstantDeclaration.");
+		// On ne fait rien, on reviendra chercher le code de la valeur quand on appellera la constante (ConstantAccess)
+		Fragment code = _factory.createFragment();
+		return code;
 	}
 
 }

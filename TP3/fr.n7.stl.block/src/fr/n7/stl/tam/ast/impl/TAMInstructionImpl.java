@@ -127,7 +127,10 @@ class TAMInstructionImpl implements TAMInstruction {
 	public String toString() {
 		String _result = "";
 		for (String _comment : this.comments) {
-			_result += ";" + _comment + "\n";
+			_result += ";" + _comment;
+			if (!_comment.endsWith("\n")) {
+				_result += "\n";
+			}
 		}
 		for (String _label : this.prefixes) {
 			_result += _label + "\n";
