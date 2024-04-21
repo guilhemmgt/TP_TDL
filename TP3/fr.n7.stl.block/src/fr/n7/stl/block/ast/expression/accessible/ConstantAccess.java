@@ -38,6 +38,7 @@ public class ConstantAccess extends AbstractAccess {
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment code = _factory.createFragment();
 		code.append(this.declaration.getValue().getCode(_factory)); // code valeur
+		code.addComment(this.toString());
 		return code;
 	}
 

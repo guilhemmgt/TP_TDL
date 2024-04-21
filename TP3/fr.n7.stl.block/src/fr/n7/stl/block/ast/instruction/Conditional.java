@@ -85,6 +85,10 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public int allocateMemory(Register _register, int _offset) {
+		this.thenBranch.allocateMemory(_register, _offset);
+		if (this.elseBranch != null) {
+			this.elseBranch.allocateMemory(_register, _offset);
+		}
 		return 0;
 	}
 
@@ -93,7 +97,38 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException( "Semantics getCode is undefined in Conditional.");
+		int labelNumber = _factory.createLabelNumber();
+		String elseLabel = "else" + labelNumber;
+		String endifLabel = "endif" + labelNumber;
+		
+		Fragment code = _factory.createFragment();
+		
+		// évaluation de la condition: le résultat est en haut de la pile
+		code.append(this.condition.getCode(_factory)); 
+		
+		// si faux, on jump au else/endif. sinon, on continue
+		if (this.elseBranch != null) {
+			code.add(_factory.createJumpIf(elseLabel, 0));
+		} else {
+			code.add(_factory.createJumpIf(endifLabel, 0));
+		}
+		
+		// code then
+		code.append(this.thenBranch.getCode(_factory)); 
+		
+		// s'il y a un else: jump endif + label else + code else
+		if (this.elseBranch != null) {
+			code.add(_factory.createJump(endifLabel));
+			code.addSuffix(elseLabel);
+			code.append(this.elseBranch.getCode(_factory));
+		}
+
+		// label endif
+		code.addSuffix(endifLabel);
+		
+		code.addComment(this.elseBranch == null ? "if" : "if else");
+		
+		return code;
 	}
 
 }
