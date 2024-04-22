@@ -4,10 +4,10 @@ LOADL 0
 STORE (1) 0[SB]
 ;int b = a;
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4883b407
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@42e26948
 LOAD (1) 0[SB]
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7d9d1a19
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@57baeedf
 ;(a < 5)
 ;while
 while22
@@ -15,12 +15,12 @@ LOAD (1) 0[SB]
 LOADL 5
 SUBR ILss
 JUMPIF (0) endwhile22
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@39c0f4a
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@343f4d3d
 ; b  = a;
 LOAD (1) 0[SB]
 LOADA 1[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1794d431
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@53b32d7
 ;(a + 1)
 ; a  = (a + 1);
 LOAD (1) 0[SB]
@@ -28,7 +28,7 @@ LOADL 1
 SUBR IAdd
 LOADA 0[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@42e26948
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5442a311
 ;(b < 7)
 ;while
 while23
@@ -36,7 +36,7 @@ LOAD (1) 1[SB]
 LOADL 7
 SUBR ILss
 JUMPIF (0) endwhile23
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@57baeedf
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@548e7350
 ;(b + 1)
 ; b  = (b + 1);
 LOAD (1) 1[SB]
@@ -50,20 +50,20 @@ endwhile23
 POP (0) 0
 JUMP while22
 endwhile22
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@343f4d3d
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1a968a59
 ;(a == 5)
 ;((a == 5) && (b == 7))
 ;print ((a == 5) && (b == 7));
 LOAD (1) 0[SB]
 LOADL 5
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@53b32d7
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4667ae56
 ;(b == 7)
 LOAD (1) 1[SB]
 LOADL 7
 SUBR IEq
 SUBR BAnd
-SUBR IOut
+SUBR BOut
 POP (0) 2
 HALT
 

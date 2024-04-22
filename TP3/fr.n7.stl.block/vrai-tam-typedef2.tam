@@ -9,14 +9,14 @@ JUMPIF (0) endif20
 PUSH 1
 LOADL 5
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@91161c7
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6a41eaa2
 ; a  = b;
 LOAD (1) 1[SB]
 LOADA 0[SB]
 STOREI (1)
 POP (0) 1
 endif20
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@604ed9f0
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7cd62f43
 ;(a == 5)
 ;print (a == 5);
 LOAD (1) 0[SB]

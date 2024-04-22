@@ -88,6 +88,14 @@ public class BinaryExpression implements Expression {
 			Logger.warning("Type error in binary expression : Merged parameters " + _left + " " + _right);
 		}
 		switch (this.operator) {
+			case And:
+			case Or:
+				if (resultType.compatibleWith(AtomicType.BooleanType)) {
+					return resultType;
+				} else {
+					Logger.warning("Type error in binary expression : " + this.operator + " parameter " + resultType);
+					return AtomicType.ErrorType;
+				}
 			case Add: {
 				if (resultType.compatibleWith(AtomicType.FloatingType) 
 						|| resultType.compatibleWith(AtomicType.StringType))  {

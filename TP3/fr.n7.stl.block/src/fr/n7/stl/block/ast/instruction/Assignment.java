@@ -82,7 +82,7 @@ public class Assignment implements Instruction, Expression {
 		Type aType = this.assignable.getType();
 		Type vType = this.value.getType();
 		boolean res = aType.compatibleWith(vType) || vType.compatibleWith(aType);
-		System.out.println("CHECKTYPE (assignment): " + aType + " vs " + vType + " = " + res);
+		System.out.println("CHECKTYPE (assignment): " + this.assignable.getClass().getSimpleName() + " : " +  aType + " vs " + this.value.getClass().getSimpleName() + " : " + vType + " = " + res);
 		return res;
 	}
 	
