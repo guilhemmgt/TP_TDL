@@ -106,7 +106,7 @@ public class Conditional implements Instruction {
 		// évaluation de la condition: le résultat est en haut de la pile
 		code.append(this.condition.getCode(_factory)); 
 		
-		// si faux, on jump au else/endif. sinon, on continue
+		// si faux (=0), on jump au else/endif. sinon, on continue
 		if (this.elseBranch != null) {
 			code.add(_factory.createJumpIf(elseLabel, 0));
 		} else {
@@ -127,7 +127,6 @@ public class Conditional implements Instruction {
 		code.addSuffix(endifLabel);
 		
 		code.addComment(this.elseBranch == null ? "if" : "if else");
-		
 		return code;
 	}
 

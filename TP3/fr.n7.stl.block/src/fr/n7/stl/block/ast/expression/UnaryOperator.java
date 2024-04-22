@@ -16,13 +16,16 @@ public enum UnaryOperator {
 	/**
 	 * Numeric opposite
 	 */
-	Opposite;
+	Opposite,
+	
+	Print; // rajouté
 
 	@Override
 	public String toString() {
 		switch (this) {
 		case Negate: return "!";
 		case Opposite: return "-";
+		case Print: return "print"; // rajouté
 		default: throw new IllegalArgumentException( "The default case should never be triggered.");		
 		}
 	}

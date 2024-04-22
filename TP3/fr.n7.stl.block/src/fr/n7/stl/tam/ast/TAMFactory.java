@@ -233,6 +233,7 @@ public interface TAMFactory {
 		switch (_operator) {
 		case Negate : return Library.BNeg;
 		case Opposite : return Library.INeg;
+		case Print: return Library.IOut; // rajouté
 		default: return null;
 		}
 	}

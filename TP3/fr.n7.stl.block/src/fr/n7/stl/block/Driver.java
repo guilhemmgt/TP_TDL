@@ -19,7 +19,7 @@ class Driver {
 			 if (lancer_tests_vrais) {
 				 for (File file : dirFiles) {
 					 String name = file.getName();
-					 if (name.startsWith(tests_vrais_prefixe)) {
+					 if (name.startsWith(tests_vrais_prefixe) && name.endsWith(tests_suffixe)) {
 						 System.out.println("\n=== TEST VRAI " + name.substring(tests_vrais_prefixe.length(), name.length() - tests_suffixe.length()) + " ===");
 						 parser = new Parser(name);
 						 parser.parse();
@@ -30,7 +30,7 @@ class Driver {
 			 if (lancer_tests_faux) {
 				 for (File file : dirFiles) {
 					 String name = file.getName();
-					 if (name.startsWith(tests_faux_prefixe)) {
+					 if (name.startsWith(tests_faux_prefixe) && name.endsWith(tests_suffixe)) {
 						 System.out.println("\n=== TEST FAUX " + name.substring(tests_faux_prefixe.length(), name.length() - tests_suffixe.length()) + " ===");
 						 parser = new Parser(name);
 						 try {

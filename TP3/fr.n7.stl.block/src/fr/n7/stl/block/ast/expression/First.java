@@ -74,7 +74,9 @@ public class First implements Expression {
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment code = _factory.createFragment();
-		code.append(this.target.getCode(_factory));
+		code.append(this.target.getCode(_factory)); // on charge les deux valeurs du couple
+		code.add(_factory.createPop(0, ((CoupleType)this.target.getType()).getFirst().length())); // on dépile le premier
+		code.addComment(this.toString());
 		return code;
 	}
 

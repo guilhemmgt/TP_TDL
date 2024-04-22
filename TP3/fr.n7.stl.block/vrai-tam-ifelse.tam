@@ -1,0 +1,41 @@
+;int a = 0;
+PUSH 1
+LOADL 0
+STORE (1) 0[SB]
+;int b = 4;
+PUSH 1
+LOADL 4
+STORE (1) 1[SB]
+;if else
+LOADL 1
+JUMPIF (0) else1
+; a  = 1;
+LOADL 1
+LOADA 0[SB]
+STOREI (1)
+JUMP endif1
+else1
+; a  = 2;
+LOADL 2
+LOADA 0[SB]
+STOREI (1)
+endif1
+; b  = 3;
+LOADL 3
+LOADA 1[SB]
+STOREI (1)
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2f7c7260
+;(a == 1)
+;((a == 1) && (b == 3))
+LOAD (1) 0[SB]
+LOADL 1
+SUBR IEq
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2d209079
+;(b == 3)
+LOAD (1) 1[SB]
+LOADL 3
+SUBR IEq
+SUBR BAnd
+SUBR IOut
+HALT
+

@@ -12,6 +12,7 @@ import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Implementation of the Abstract Syntax Tree node for a conditional instruction.
@@ -73,7 +74,8 @@ public class Iteration implements Instruction {
 	 */
 	@Override
 	public int allocateMemory(Register _register, int _offset) {
-		throw new SemanticsUndefinedException( "Semantics allocateMemory is undefined in Iteration.");
+		this.body.allocateMemory(_register, _offset);
+		return 0;
 	}
 
 	/* (non-Javadoc)
@@ -81,7 +83,28 @@ public class Iteration implements Instruction {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException( "Semantics getCode is undefined in Iteration.");
+		int labelNumber = _factory.createLabelNumber();
+		String whileLabel = "while" + labelNumber;
+		String endwhileLabel = "endwhile" + labelNumber;
+		
+		Fragment code = _factory.createFragment();
+		
+		// évaluation de la condition: le résultat est en haut de la pile
+		code.append(this.condition.getCode(_factory)); 
+		
+		// si faux (=0), on jump au else/endif. sinon, on continue
+		code.add(_factory.createJumpIf(endwhileLabel, 0));
+		
+		// label while + code body + jump while
+		code.addSuffix(whileLabel);
+		code.append(this.body.getCode(_factory));
+		code.add(_factory.createJump(whileLabel));
+
+		// label endwhile
+		code.addSuffix(endwhileLabel);
+		
+		code.addComment("while");
+		return code;
 	}
 
 }

@@ -74,6 +74,8 @@ public class Second implements Expression {
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment code = _factory.createFragment();
 		code.append(this.target.getCode(_factory));
+		code.add(_factory.createPop(1, ((CoupleType)this.target.getType()).getSecond().length())); // on retire le premier
+		code.addComment(this.toString());
 		return code;
 	}
 

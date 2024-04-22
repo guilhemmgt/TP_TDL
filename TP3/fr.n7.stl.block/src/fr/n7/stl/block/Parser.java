@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.*;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import fr.n7.stl.block.ast.*;
 import fr.n7.stl.block.ast.expression.*;
 import fr.n7.stl.block.ast.expression.accessible.*;
@@ -771,17 +773,23 @@ class CUP$Parser$actions {
 							code.append(bloc.getCode(tamFactory));
 							code.add(tamFactory.createHalt());
 							
-							System.out.println("Code generated : ");
-							System.out.println("###");
-							System.out.println(code + "###");
+							System.out.println("Code generated.");
+							
+							try {
+								File tamFile = new File (parser.name.replaceAll(".txt", "").replaceAll("test","tam") + ".tam");
+								PrintStream stream = new PrintStream(new FileOutputStream(tamFile));
+								stream.println(code);
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						} else {
-							System.out.println("Type failed.");
+							Logger.error("Type failed.");
 						}
 					} else {
-						System.out.println("Resolve failed.");
+						Logger.error("Resolve failed.");
 					}
 				} else {
-					System.out.println("Collect failed.");
+					Logger.error("Collect failed.");
 				}
 				
 			

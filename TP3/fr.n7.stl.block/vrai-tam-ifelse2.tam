@@ -1,0 +1,69 @@
+;int a = 0;
+PUSH 1
+LOADL 0
+STORE (1) 0[SB]
+;int b = 4;
+PUSH 1
+LOADL 4
+STORE (1) 1[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6b71769e
+;(b == 4)
+;if else
+LOAD (1) 1[SB]
+LOADL 4
+SUBR IEq
+JUMPIF (0) else2
+; a  = 1;
+LOADL 1
+LOADA 0[SB]
+STOREI (1)
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2752f6e2
+;(b == (- 1))
+;if else
+LOAD (1) 1[SB]
+;(- 1)
+LOADL 1
+SUBR INeg
+SUBR IEq
+JUMPIF (0) else3
+; a  = 2;
+LOADL 2
+LOADA 0[SB]
+STOREI (1)
+JUMP endif3
+else3
+; a  = 3;
+LOADL 3
+LOADA 0[SB]
+STOREI (1)
+endif3
+JUMP endif2
+else2
+; a  = 4;
+LOADL 4
+LOADA 0[SB]
+STOREI (1)
+endif2
+;(- 1)
+; b  = (- 1);
+LOADL 1
+SUBR INeg
+LOADA 1[SB]
+STOREI (1)
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@e580929
+;(a == 3)
+;((a == 3) && (b == (- 1)))
+LOAD (1) 0[SB]
+LOADL 3
+SUBR IEq
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1cd072a9
+;(b == (- 1))
+LOAD (1) 1[SB]
+;(- 1)
+LOADL 1
+SUBR INeg
+SUBR IEq
+SUBR BAnd
+SUBR IOut
+HALT
+

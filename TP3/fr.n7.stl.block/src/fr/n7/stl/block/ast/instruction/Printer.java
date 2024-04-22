@@ -5,6 +5,7 @@ package fr.n7.stl.block.ast.instruction;
 
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.expression.Expression;
+import fr.n7.stl.block.ast.expression.UnaryOperator;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.AtomicType;
@@ -72,7 +73,7 @@ public class Printer implements Instruction {
 	 */
 	@Override
 	public int allocateMemory(Register _register, int _offset) {
-		throw new SemanticsUndefinedException("Semantics allocateMemory undefined in Printer.");
+		return 0;
 	}
 
 	/* (non-Javadoc)
@@ -80,7 +81,10 @@ public class Printer implements Instruction {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException("Semantics getCode undefined in Printer.");
+		Fragment code = _factory.createFragment();
+		code.append(this.parameter.getCode(_factory));
+		code.add(TAMFactory.createUnaryOperator(UnaryOperator.Print));
+		return code;
 	}
 
 }
