@@ -2,15 +2,32 @@
 PUSH 1
 LOADL 0
 STORE (1) 0[SB]
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@55f3ddb1
+=======
+<<<<<<< HEAD
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@30dae81
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5c7fa833
+>>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
+>>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
 ;(a < 5)
 ;while
-while12
+while13
 LOAD (1) 0[SB]
 LOADL 5
 SUBR ILss
+<<<<<<< HEAD
+JUMPIF (0) endwhile13
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1b2c6ec2
+=======
 JUMPIF (0) endwhile12
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@8bd1b6a
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@39aeed2f
+>>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
+>>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
 ;(a + 1)
 ; a  = (a + 1);
 LOAD (1) 0[SB]
@@ -18,9 +35,19 @@ LOADL 1
 SUBR IAdd
 LOADA 0[SB]
 STOREI (1)
+<<<<<<< HEAD
+JUMP while13
+endwhile13
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4edde6e5
+=======
 JUMP while12
 endwhile12
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@18be83e4
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@724af044
+>>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
+>>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
 ;(a == 5)
 ;print (a == 5);
 LOAD (1) 0[SB]
