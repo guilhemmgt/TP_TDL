@@ -31,6 +31,8 @@ public class Block {
 	 */
 	protected List<Instruction> instructions;
 	protected HierarchicalScope<Declaration> locals;
+	
+	private int size;
 
 	/**
 	 * Constructor for a block.
@@ -108,7 +110,8 @@ public class Block {
 		for(Instruction instruction : this.instructions){
 			offset += instruction.allocateMemory(_register, offset);
 		}
-		System.out.println("ALLOCATEMEMORY (block): allocated " + (offset - _offset));
+		this.size = offset - _offset;
+		System.out.println("ALLOCATEMEMORY (block): allocated " + this.size);
 	}
 
 	/**
@@ -122,6 +125,7 @@ public class Block {
 		for(Instruction instruction : this.instructions){
 			code.append(instruction.getCode(_factory));
 		}
+		code.add(_factory.createPop(0, this.size));
 		return code;
 	}
 

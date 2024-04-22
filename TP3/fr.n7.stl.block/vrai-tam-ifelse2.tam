@@ -30,13 +30,16 @@ JUMPIF (0) endif11
 LOADL 2
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 endif11
+POP (0) 0
 JUMP endif10
 else10
 ; a  = 4;
 LOADL 4
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 endif10
 ;(- 1)
 ; b  = (- 1);
@@ -60,5 +63,6 @@ SUBR INeg
 SUBR IEq
 SUBR BAnd
 SUBR IOut
+POP (0) 2
 HALT
 

@@ -13,12 +13,14 @@ JUMPIF (0) else9
 LOADL 1
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 JUMP endif9
 else9
 ; a  = 2;
 LOADL 2
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 endif9
 ; b  = 3;
 LOADL 3
@@ -38,5 +40,6 @@ LOADL 3
 SUBR IEq
 SUBR BAnd
 SUBR IOut
+POP (0) 2
 HALT
 

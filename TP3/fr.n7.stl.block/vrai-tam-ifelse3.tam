@@ -32,7 +32,9 @@ JUMPIF (0) endif13
 LOADL 2
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 endif13
+POP (0) 0
 JUMP endif12
 else12
 ; a  = 4;
@@ -45,7 +47,9 @@ JUMPIF (0) endif14
 ;if
 LOADL 1
 JUMPIF (0) endif15
+POP (0) 0
 endif15
+POP (0) 0
 endif14
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5cc7c2a6
 ;(a == 4)
@@ -58,9 +62,12 @@ JUMPIF (0) else16
 LOADL 3
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 JUMP endif16
 else16
+POP (0) 0
 endif16
+POP (0) 0
 endif12
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@b97c004
 ;(a == 3)
@@ -76,5 +83,6 @@ LOADL 4
 SUBR IEq
 SUBR BAnd
 SUBR IOut
+POP (0) 2
 HALT
 

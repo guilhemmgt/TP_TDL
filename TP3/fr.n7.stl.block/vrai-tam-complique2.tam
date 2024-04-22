@@ -52,6 +52,7 @@ STORE (1) 4[SB]
 LOAD (1) 4[SB]
 LOADA 2[SB]
 STOREI (1)
+POP (0) 1
 JUMP endif5
 else5
 ;int nb = (b - a);
@@ -68,7 +69,9 @@ STORE (1) 4[SB]
 LOAD (1) 4[SB]
 LOADA 3[SB]
 STOREI (1)
+POP (0) 1
 endif5
+POP (0) 0
 JUMP while4
 endwhile4
 ;int res = a;
@@ -89,6 +92,7 @@ JUMPIF (0) endif6
 LOAD (1) 3[SB]
 LOADA 4[SB]
 STOREI (1)
+POP (0) 0
 endif6
 ;print "pgcd(105,45)=";
 LOADL 34
@@ -133,5 +137,6 @@ LOAD (1) 4[SB]
 LOADL 21
 SUBR IEq
 SUBR BOut
+POP (0) 5
 HALT
 

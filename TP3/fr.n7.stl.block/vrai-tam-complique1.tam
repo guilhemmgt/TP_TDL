@@ -65,8 +65,10 @@ LOAD (1) 5[SB]
 SUBR IAdd
 LOADA 3[SB]
 STOREI (1)
+POP (0) 1
 JUMP while2
 endwhile2
+POP (0) 1
 JUMP endif1
 else1
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@224aed64
@@ -84,7 +86,9 @@ JUMPIF (0) endif3
 LOADL 0
 LOADA 0[SB]
 STOREI (1)
+POP (0) 0
 endif3
+POP (0) 0
 endif1
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@71e7a66b
 ;(i == 5)
@@ -125,5 +129,6 @@ LOADL 10
 SUBR IEq
 SUBR BAnd
 SUBR IOut
+POP (0) 4
 HALT
 
