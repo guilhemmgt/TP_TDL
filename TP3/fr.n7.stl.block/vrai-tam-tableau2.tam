@@ -19,7 +19,7 @@ SUBR IAdd
 STOREI (1)
 ;int a = (fst t[ 3 ]);
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@68be2bc2
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5b2133b1
 ;ArrayAccess: t[ 3 ]
 ;(fst t[ 3 ])
 LOAD (1) 0[SB]
@@ -30,13 +30,13 @@ SUBR IAdd
 LOADI (1)
 POP (0) 1
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@28feb3fa
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@72ea2f77
 ;print a;
 LOAD (1) 1[SB]
 SUBR IOut
 ;char b = (sndt[ 3 ]);
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@675d3402
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@33c7353a
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
 LOAD (1) 0[SB]
