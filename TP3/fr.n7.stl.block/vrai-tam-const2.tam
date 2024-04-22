@@ -1,0 +1,26 @@
+;int a = 5;
+PUSH 1
+LOADL 5
+STORE (1) 0[SB]
+;int b = 6;
+PUSH 1
+LOADL 6
+STORE (1) 1[SB]
+; a  = 1;
+LOADL 1
+LOADA 0[SB]
+STOREI (1)
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7225790e
+;(a * b)
+;fr.n7.stl.block.ast.expression.accessible.ConstantAccess@36f6e879
+;(c == 30)
+;print (c == 30);
+LOAD (1) 0[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@54a097cc
+LOAD (1) 1[SB]
+SUBR IMul
+LOADL 30
+SUBR IEq
+SUBR BOut
+HALT
+

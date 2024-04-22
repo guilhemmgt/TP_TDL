@@ -49,7 +49,7 @@ public class ArrayAllocation implements Expression {
 	 */
 	@Override
 	public boolean fullResolve(HierarchicalScope<Declaration> _scope) {
-		return size.fullResolve(_scope);
+		return size.fullResolve(_scope) && this.element.resolve(_scope);
 	}
 
 	/* (non-Javadoc)

@@ -6,56 +6,24 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 3
 STORE (1) 1[SB]
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5c7fa833
-=======
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@330bedb4
-=======
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@675d3402
->>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
->>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@523884b2
 ; a  = b;
 LOAD (1) 1[SB]
 LOADA 0[SB]
 STOREI (1)
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@39aeed2f
-=======
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2503dbd3
-=======
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@51565ec2
->>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
->>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5b275dab
 ; b  = a;
 LOAD (1) 0[SB]
 LOADA 1[SB]
 STOREI (1)
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@724af044
-=======
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4b67cf4d
-=======
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@482f8f11
->>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
->>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@61832929
 ;(a == 3)
 ;((a == 3) && (b == 3))
 ;print ((a == 3) && (b == 3));
 LOAD (1) 0[SB]
 LOADL 3
 SUBR IEq
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4678c730
-=======
-<<<<<<< HEAD
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ea987ac
-=======
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1593948d
->>>>>>> ed0c851130d13592bbd2133eeeaab89c4c762a78
->>>>>>> 0e99ce002b6019adc52845737f85ead9711b0951
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@29774679
 ;(b == 3)
 LOAD (1) 1[SB]
 LOADL 3
