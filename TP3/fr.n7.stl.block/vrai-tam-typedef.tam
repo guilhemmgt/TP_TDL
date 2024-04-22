@@ -6,24 +6,24 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 3
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5dfcfece
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@d2cc05a
 ; a  = b;
 LOAD (1) 1[SB]
 LOADA 0[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@23ceabc1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4f933fd1
 ; b  = a;
 LOAD (1) 0[SB]
 LOADA 1[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5d5eef3d
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@548a9f61
 ;(a == 3)
 ;((a == 3) && (b == 3))
 ;print ((a == 3) && (b == 3));
 LOAD (1) 0[SB]
 LOADL 3
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@56f4468b
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1753acfe
 ;(b == 3)
 LOAD (1) 1[SB]
 LOADL 3

@@ -1,0 +1,34 @@
+;Entier e = 5;
+PUSH 1
+LOADL 5
+STORE (1) 0[SB]
+;int v = 2;
+PUSH 1
+LOADL 2
+STORE (1) 1[SB]
+;(int *) ptr = fr.n7.stl.block.ast.expression.accessible.AddressAccess@2669b199;
+PUSH 1
+LOADA 1[SB]
+STORE (1) 2[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2344fc66
+; e  = (*ptr);
+LOAD (1) 2[SB]
+LOADI (1)
+LOADA 0[SB]
+STOREI (1)
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@458ad742
+;(v == 2)
+;((v == 2) && (e == 2))
+;print ((v == 2) && (e == 2));
+LOAD (1) 1[SB]
+LOADL 2
+SUBR IEq
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5afa04c
+;(e == 2)
+LOAD (1) 0[SB]
+LOADL 2
+SUBR IEq
+SUBR BAnd
+SUBR IOut
+HALT
+

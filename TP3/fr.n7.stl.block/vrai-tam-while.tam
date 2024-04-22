@@ -2,7 +2,7 @@
 PUSH 1
 LOADL 0
 STORE (1) 0[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2ef5e5e3
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@68be2bc2
 ;(a < 5)
 ;while
 while12
@@ -10,7 +10,7 @@ LOAD (1) 0[SB]
 LOADL 5
 SUBR ILss
 JUMPIF (0) endwhile12
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@36d4b5c
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@28feb3fa
 ;(a + 1)
 ; a  = (a + 1);
 LOAD (1) 0[SB]
@@ -20,7 +20,7 @@ LOADA 0[SB]
 STOREI (1)
 JUMP while12
 endwhile12
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d00a15d
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@675d3402
 ;(a == 5)
 ;print (a == 5);
 LOAD (1) 0[SB]

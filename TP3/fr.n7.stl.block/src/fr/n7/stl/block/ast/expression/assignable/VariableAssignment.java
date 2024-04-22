@@ -66,6 +66,10 @@ public class VariableAssignment extends AbstractIdentifier implements Assignable
 		return this.declaration.getType();
 	}
 
+	public VariableDeclaration getDeclaration () {
+		return this.declaration;
+	}
+	
 	/* (non-Javadoc)
 	 * @see fr.n7.stl.block.ast.impl.VariableUseImpl#getCode(fr.n7.stl.tam.ast.TAMFactory)
 	 */
