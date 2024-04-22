@@ -60,7 +60,7 @@ public class ArrayType implements Type {
 	 */
 	@Override
 	public int length() {
-		return 1; // ou alors element.length() ?
+		return 1;
 	}
 
 	/* (non-Javadoc)

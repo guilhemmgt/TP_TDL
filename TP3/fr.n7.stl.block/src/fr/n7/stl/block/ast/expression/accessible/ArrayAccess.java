@@ -9,6 +9,7 @@ import fr.n7.stl.block.ast.expression.BinaryOperator;
 import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.expression.assignable.VariableAssignment;
 import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
+import fr.n7.stl.block.ast.type.ArrayType;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
 
@@ -36,12 +37,11 @@ public class ArrayAccess extends AbstractArray implements AccessibleExpression {
 		Fragment code = _factory.createFragment();
 		code.append(this.array.getCode(_factory));
 		code.append(this.index.getCode(_factory)); // charger l'index
-		code.add(_factory.createLoadL(this.array.getType().length())); // charge la taille d'un éléménet
+		code.add(_factory.createLoadL(((ArrayType)this.array.getType()).getType().length())); // charge la taille d'un éléménet
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply));
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Add));
 		code.add(_factory.createLoadI(this.array.getType().length()));
-		
-		
+		code.addComment("ArrayAccess: " + this.toString());
 		return code;
 	}
 

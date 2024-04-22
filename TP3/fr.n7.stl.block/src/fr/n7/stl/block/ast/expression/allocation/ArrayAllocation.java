@@ -67,9 +67,10 @@ public class ArrayAllocation implements Expression {
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment code = _factory.createFragment();
 		code.append(this.size.getCode(_factory)); // on charge le nb d'éléments du tableau
-		code.add(_factory.createLoadL(this.getType().length())); // on charge la taille d'un élément du tableau
+		code.add(_factory.createLoadL(this.element.length())); // on charge la taille d'un élément du tableau
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply)); // on charge nb_elements*taille_element=taille_tableau
 		code.add(Library.MAlloc);
+		code.addComment(this.toString());
 		return code;
 	}
 
