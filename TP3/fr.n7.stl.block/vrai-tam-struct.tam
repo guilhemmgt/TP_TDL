@@ -5,26 +5,26 @@ LOADL 8
 STORE (2) 0[SB]
 ;int a = p.x;
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ac7a4e4
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5034c75a
 LOAD (2) 0[SB]
 POP (0) 1
 POP (1) 0
 STORE (1) 2[SB]
 ;int b = p.y;
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d78f375
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@396a51ab
 LOAD (2) 0[SB]
 POP (0) 0
 POP (1) 1
 STORE (1) 3[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@50c87b21
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@51081592
 ;(a == 5)
 ;((a == 5) && (b == 8))
 ;print ((a == 5) && (b == 8));
 LOAD (1) 2[SB]
 LOADL 5
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5f375618
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7f9a81e8
 ;(b == 8)
 LOAD (1) 3[SB]
 LOADL 8

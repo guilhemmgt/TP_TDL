@@ -7,6 +7,7 @@ import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.AtomicType;
+import fr.n7.stl.util.Logger;
 
 /**
  * Implementation of the Abstract Syntax Tree node for a pointer type.
@@ -50,7 +51,12 @@ public class PointerType implements Type {
 	 */
 	@Override
 	public Type merge(Type _other) {
-		throw new SemanticsUndefinedException("Semantics merge undefined in PointerType.");
+		if (_other instanceof PointerType) {
+			return new PointerType (this.element.merge(((PointerType)_other).element));
+		} else {
+			Logger.error("merge: " + _other + " n'est pas un pointeur.");
+			return null;
+		}
 	}
 
 	/* (non-Javadoc)

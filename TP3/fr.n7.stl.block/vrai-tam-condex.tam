@@ -4,33 +4,33 @@ LOADL 1
 STORE (1) 0[SB]
 ;int j = ((i == 1) ? 2 : 1);
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6615435c
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@13c78c0b
 ;(i == 1)
 LOAD (1) 0[SB]
 LOADL 1
 SUBR IEq
-JUMPIF (0) condexElse7
+JUMPIF (0) condexElse10
 LOADL 2
-JUMP condexEnd7
-condexElse7
+JUMP condexEnd10
+condexElse10
 LOADL 1
-condexEnd7
+condexEnd10
 STORE (1) 1[SB]
 ;char k = ((i == 5) ? 'l' : 'm');
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4909b8da
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@12843fce
 ;(i == 5)
 LOAD (1) 0[SB]
 LOADL 5
 SUBR IEq
-JUMPIF (0) condexElse8
+JUMPIF (0) condexElse11
 LOADL 108
-JUMP condexEnd8
-condexElse8
+JUMP condexEnd11
+condexElse11
 LOADL 109
-condexEnd8
+condexEnd11
 STORE (1) 2[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3a03464
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3dd3bcd
 ;(i == 1)
 ;((i == 1) && (j == 2))
 ;(((i == 1) && (j == 2)) && (k == 'm'))
@@ -38,13 +38,13 @@ STORE (1) 2[SB]
 LOAD (1) 0[SB]
 LOADL 1
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2d3fcdbd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@97e1986
 ;(j == 2)
 LOAD (1) 1[SB]
 LOADL 2
 SUBR IEq
 SUBR BAnd
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@617c74e5
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@26f67b76
 ;(k == 'm')
 LOAD (1) 2[SB]
 LOADL 109
