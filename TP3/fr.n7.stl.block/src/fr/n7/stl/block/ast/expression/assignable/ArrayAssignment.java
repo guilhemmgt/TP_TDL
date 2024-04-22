@@ -41,7 +41,7 @@ public class ArrayAssignment extends AbstractArray implements AssignableExpressi
 		code.add(_factory.createLoadL(((ArrayType)this.array.getType()).getType().length())); // charge la taille d'un éléménet
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply));
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Add));
-		code.add(_factory.createStoreI(this.array.getType().length()));
+		code.add(_factory.createStoreI(((ArrayType)this.array.getType()).getType().length()));
 		code.addComment("ArrayAssignement: " + this.toString());
 		return code;
 	}

@@ -40,7 +40,7 @@ public class ArrayAccess extends AbstractArray implements AccessibleExpression {
 		code.add(_factory.createLoadL(((ArrayType)this.array.getType()).getType().length())); // charge la taille d'un éléménet
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply));
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Add));
-		code.add(_factory.createLoadI(this.array.getType().length()));
+		code.add(_factory.createLoadI(((ArrayType)this.array.getType()).getType().length()));
 		code.addComment("ArrayAccess: " + this.toString());
 		return code;
 	}
