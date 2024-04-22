@@ -16,36 +16,36 @@ LOADL 3
 LOADL 2
 SUBR IMul
 SUBR IAdd
-STOREI (1)
-;int a = (fst t[ 3 ]);
-PUSH 1
+STOREI (2)
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@68be2bc2
 ;ArrayAccess: t[ 3 ]
 ;(fst t[ 3 ])
+;((fst t[ 3 ]) == 5)
+;(((fst t[ 3 ]) == 5) && ((sndt[ 3 ]) == 'e'))
+;print (((fst t[ 3 ]) == 5) && ((sndt[ 3 ]) == 'e'));
 LOAD (1) 0[SB]
 LOADL 3
 LOADL 2
 SUBR IMul
 SUBR IAdd
-LOADI (1)
+LOADI (2)
 POP (0) 1
-STORE (1) 1[SB]
+LOADL 5
+SUBR IEq
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@28feb3fa
-;print a;
-LOAD (1) 1[SB]
-SUBR IOut
-;char b = (sndt[ 3 ]);
-PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@675d3402
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
+;((sndt[ 3 ]) == 'e')
 LOAD (1) 0[SB]
 LOADL 3
 LOADL 2
 SUBR IMul
 SUBR IAdd
-LOADI (1)
+LOADI (2)
 POP (1) 1
-STORE (1) 2[SB]
+LOADL 101
+SUBR IEq
+SUBR BAnd
+SUBR IOut
 HALT
 
