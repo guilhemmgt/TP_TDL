@@ -9,6 +9,8 @@ import fr.n7.stl.block.ast.expression.BinaryOperator;
 import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
 import fr.n7.stl.block.ast.type.ArrayType;
+import fr.n7.stl.block.ast.type.NamedType;
+import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
 
@@ -38,10 +40,14 @@ public class ArrayAssignment extends AbstractArray implements AssignableExpressi
 		code.add(_factory.createLoadA(varDeclaration.getRegister(), varDeclaration.getOffset()));
 		code.add(_factory.createLoadI(this.array.getType().length())); // charge l'adresse du tableau
 		code.append(this.index.getCode(_factory)); // charger l'index
-		code.add(_factory.createLoadL(((ArrayType)this.array.getType()).getType().length())); // charge la taille d'un éléménet
+		Type arrayType = this.array.getType();
+		while (arrayType instanceof NamedType) {
+			arrayType = ((NamedType)arrayType).getType();
+		}
+		code.add(_factory.createLoadL(((ArrayType)arrayType).getType().length())); // charge la taille d'un éléménet
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply));
 		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Add));
-		code.add(_factory.createStoreI(((ArrayType)this.array.getType()).getType().length()));
+		code.add(_factory.createStoreI(((ArrayType)arrayType).getType().length()));
 		code.addComment("ArrayAssignement: " + this.toString());
 		return code;
 	}

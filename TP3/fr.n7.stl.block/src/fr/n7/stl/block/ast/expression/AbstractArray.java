@@ -7,6 +7,7 @@ import fr.n7.stl.block.ast.type.ArrayType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.util.Logger;
 import fr.n7.stl.block.ast.type.AtomicType;
+import fr.n7.stl.block.ast.type.NamedType;
 
 /**
  * Common elements between left (Assignable) and right (Expression) end sides of assignments. These elements
@@ -70,7 +71,11 @@ public abstract class AbstractArray implements Expression {
 	 */
 	public Type getType() {
 		Type arrayType = this.array.getType();
-		if (arrayType instanceof ArrayType) {
+		while (arrayType instanceof NamedType) {
+			arrayType = ((NamedType)arrayType).getType();
+		}
+		
+		if (arrayType instanceof ArrayType && this.index.getType().compatibleWith(AtomicType.IntegerType)) {
 			return ((ArrayType)arrayType).getType();
 		} else {
 			Logger.error(arrayType + " n'est pas du type ArrayType");
