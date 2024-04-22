@@ -8,29 +8,30 @@ LOADL 4
 STORE (1) 1[SB]
 ;if else
 LOADL 1
-JUMPIF (0) else1
+JUMPIF (0) else9
 ; a  = 1;
 LOADL 1
 LOADA 0[SB]
 STOREI (1)
-JUMP endif1
-else1
+JUMP endif9
+else9
 ; a  = 2;
 LOADL 2
 LOADA 0[SB]
 STOREI (1)
-endif1
+endif9
 ; b  = 3;
 LOADL 3
 LOADA 1[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2f7c7260
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@531be3c5
 ;(a == 1)
 ;((a == 1) && (b == 3))
+;print ((a == 1) && (b == 3));
 LOAD (1) 0[SB]
 LOADL 1
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2d209079
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@52af6cff
 ;(b == 3)
 LOAD (1) 1[SB]
 LOADL 3

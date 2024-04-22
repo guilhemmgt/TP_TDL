@@ -89,14 +89,14 @@ public class Iteration implements Instruction {
 		
 		Fragment code = _factory.createFragment();
 		
-		// évaluation de la condition: le résultat est en haut de la pile
+		// label while + évaluation de la condition: le résultat est en haut de la pile
 		code.append(this.condition.getCode(_factory)); 
+		code.addPrefix(whileLabel);
 		
 		// si faux (=0), on jump au else/endif. sinon, on continue
 		code.add(_factory.createJumpIf(endwhileLabel, 0));
 		
-		// label while + code body + jump while
-		code.addSuffix(whileLabel);
+		// code body + jump while
 		code.append(this.body.getCode(_factory));
 		code.add(_factory.createJump(whileLabel));
 

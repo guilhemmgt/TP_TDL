@@ -97,11 +97,11 @@ public class Conditional implements Instruction {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
+		Fragment code = _factory.createFragment();
+		
 		int labelNumber = _factory.createLabelNumber();
 		String elseLabel = "else" + labelNumber;
 		String endifLabel = "endif" + labelNumber;
-		
-		Fragment code = _factory.createFragment();
 		
 		// évaluation de la condition: le résultat est en haut de la pile
 		code.append(this.condition.getCode(_factory)); 

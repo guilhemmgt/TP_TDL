@@ -6,12 +6,14 @@ package fr.n7.stl.block.ast.instruction;
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.expression.UnaryOperator;
+import fr.n7.stl.block.ast.expression.value.StringValue;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.block.ast.type.CoupleType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
+import fr.n7.stl.tam.ast.Library;
 import fr.n7.stl.tam.ast.Register;
 import fr.n7.stl.tam.ast.TAMFactory;
 
@@ -83,7 +85,21 @@ public class Printer implements Instruction {
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment code = _factory.createFragment();
 		code.append(this.parameter.getCode(_factory));
-		code.add(TAMFactory.createUnaryOperator(UnaryOperator.Print));
+		Type paramType = this.parameter.getType();
+		if (paramType == AtomicType.BooleanType) {
+			code.add(Library.BOut);
+		} else if (paramType == AtomicType.StringType) {
+			// HACK bricolage (cf StringValue.getCode)
+			for (int i = 1; i < ((StringValue)this.parameter).toString().length() - 1; i++) {
+				code.add(Library.COut);
+			}
+		} else if (paramType == AtomicType.CharacterType) {
+			code.add(Library.COut);
+		} else {
+			code.add(Library.IOut);
+		}
+		code.addComment(this.toString());
+		
 		return code;
 	}
 

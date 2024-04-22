@@ -99,7 +99,20 @@ public class ConditionalExpression implements Expression {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException( "Semantics getCode is undefined in ConditionalExpression.");
+		Fragment code = _factory.createFragment();
+		int labelNumber = _factory.createLabelNumber();
+		String elseLabel = "condexElse" + labelNumber;
+		String endLabel = "condexEnd" + labelNumber;
+		
+		code.append(this.condition.getCode(_factory)); // code condition
+		code.add(_factory.createJumpIf(elseLabel, 0)); // si faux, on va au else, sinon on continue
+		code.append(this.thenExpression.getCode(_factory)); // code then
+		code.add(_factory.createJump(endLabel)); // jump end
+		code.addSuffix(elseLabel); // label else
+		code.append(this.elseExpression.getCode(_factory)); // code else
+		code.addSuffix(endLabel); // label end
+		
+		return code;
 	}
 
 }

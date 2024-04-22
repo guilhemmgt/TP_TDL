@@ -9,6 +9,7 @@ import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Implementation of the Abstract Syntax Tree node for an integer constant expression.
@@ -65,6 +66,7 @@ public class FloatingValue implements Value {
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment _fragment = _factory.createFragment();
+		Logger.warning("TODO : LoadL incompatible avec les flottants. Expression ignoree.");
 //		_fragment.add(_factory.createLoadL(this.value));
 		return _fragment;
 	}

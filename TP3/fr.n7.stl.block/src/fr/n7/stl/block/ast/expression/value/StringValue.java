@@ -9,6 +9,7 @@ import fr.n7.stl.block.ast.type.AtomicType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
+import fr.n7.stl.util.Logger;
 
 /**
  * Implementation of the Abstract Syntax Tree node for an integer constant expression.
@@ -66,6 +67,10 @@ public class StringValue implements Value {
 	public Fragment getCode(TAMFactory _factory) {
 		Fragment _fragment = _factory.createFragment();
 //		_fragment.add(_factory.createLoadL(this.value));
+		// HACK bricolage
+		for(int i = this.value.length()-1; i > 0 ; i--) { 
+			_fragment.add(_factory.createLoadL(this.value.charAt(i)));
+		}
 		return _fragment;
 	}
 
