@@ -1,0 +1,121 @@
+;Truc p = { 5 ,']' ,< 1, < 2, 3>> ,6 ,true };
+PUSH 7
+LOADL 5
+LOADL 93
+LOADL 1
+LOADL 2
+LOADL 3
+LOADL 6
+LOADL 1
+STORE (7) 0[SB]
+;int pa = p.a;
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7c0e2abd
+LOAD (7) 0[SB]
+POP (0) 6
+POP (1) 0
+STORE (1) 7[SB]
+;char pb = p.b;
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@48eff760
+LOAD (7) 0[SB]
+POP (0) 5
+POP (1) 1
+STORE (1) 8[SB]
+;< int, < int, int>> pc = p.c;
+PUSH 3
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@402f32ff
+LOAD (7) 0[SB]
+POP (0) 2
+POP (3) 2
+STORE (3) 9[SB]
+;int pc1 = (fst pc);
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@573f2bb1
+;(fst pc)
+LOAD (3) 9[SB]
+POP (0) 2
+STORE (1) 12[SB]
+;int pc2 = (fst (sndpc));
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5ae9a829
+;(sndpc)
+;(fst (sndpc))
+LOAD (3) 9[SB]
+POP (2) 1
+POP (0) 1
+STORE (1) 13[SB]
+;int pc3 = (snd(sndpc));
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d8a00e3
+;(sndpc)
+;(snd(sndpc))
+LOAD (3) 9[SB]
+POP (2) 1
+POP (1) 1
+STORE (1) 14[SB]
+;int pd = p.d;
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@548b7f67
+LOAD (7) 0[SB]
+POP (0) 1
+POP (1) 5
+STORE (1) 15[SB]
+;boolean pe = p.e;
+PUSH 1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ac7a4e4
+LOAD (7) 0[SB]
+POP (0) 0
+POP (1) 6
+STORE (1) 16[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d78f375
+;(pa == 5)
+;((pa == 5) && (pb == ']'))
+;(((pa == 5) && (pb == ']')) && (pc1 == 1))
+;((((pa == 5) && (pb == ']')) && (pc1 == 1)) && (pc2 == 2))
+;(((((pa == 5) && (pb == ']')) && (pc1 == 1)) && (pc2 == 2)) && (pc3 == 3))
+;((((((pa == 5) && (pb == ']')) && (pc1 == 1)) && (pc2 == 2)) && (pc3 == 3)) && (pd == 6))
+;(((((((pa == 5) && (pb == ']')) && (pc1 == 1)) && (pc2 == 2)) && (pc3 == 3)) && (pd == 6)) && (pe == true))
+;print (((((((pa == 5) && (pb == ']')) && (pc1 == 1)) && (pc2 == 2)) && (pc3 == 3)) && (pd == 6)) && (pe == true));
+LOAD (1) 7[SB]
+LOADL 5
+SUBR IEq
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@50c87b21
+;(pb == ']')
+LOAD (1) 8[SB]
+LOADL 93
+SUBR IEq
+SUBR BAnd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5f375618
+;(pc1 == 1)
+LOAD (1) 12[SB]
+LOADL 1
+SUBR IEq
+SUBR BAnd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1810399e
+;(pc2 == 2)
+LOAD (1) 13[SB]
+LOADL 2
+SUBR IEq
+SUBR BAnd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@32d992b2
+;(pc3 == 3)
+LOAD (1) 14[SB]
+LOADL 3
+SUBR IEq
+SUBR BAnd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@215be6bb
+;(pd == 6)
+LOAD (1) 15[SB]
+LOADL 6
+SUBR IEq
+SUBR BAnd
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4439f31e
+;(pe == true)
+LOAD (1) 16[SB]
+LOADL 1
+SUBR IEq
+SUBR BAnd
+SUBR IOut
+HALT
+

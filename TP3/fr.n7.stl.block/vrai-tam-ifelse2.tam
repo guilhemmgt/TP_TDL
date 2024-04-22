@@ -6,7 +6,7 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 4
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2096442d
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@69d9c55
 ;(b == 4)
 ;if else
 LOAD (1) 1[SB]
@@ -17,7 +17,7 @@ JUMPIF (0) else10
 LOADL 1
 LOADA 0[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@9f70c54
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@13a57a3b
 ;(b == (- 1))
 ;if
 LOAD (1) 1[SB]
@@ -44,14 +44,14 @@ LOADL 1
 SUBR INeg
 LOADA 1[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@234bef66
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ca48474
 ;(a == 1)
 ;((a == 1) && (b == (- 1)))
 ;print ((a == 1) && (b == (- 1)));
 LOAD (1) 0[SB]
 LOADL 1
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@737996a0
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@337d0578
 ;(b == (- 1))
 LOAD (1) 1[SB]
 ;(- 1)

@@ -215,4 +215,8 @@ public class RecordType implements Type, Declaration, Scope<FieldDeclaration> {
 	public Type getType() {
 		return this;
 	}
+	
+	public List<FieldDeclaration>  getFields () {
+		return this.fields;
+	}
 }
