@@ -4,12 +4,14 @@
 package fr.n7.stl.block.ast.expression.allocation;
 
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
+import fr.n7.stl.block.ast.expression.BinaryOperator;
 import fr.n7.stl.block.ast.expression.Expression;
 import fr.n7.stl.block.ast.scope.Declaration;
 import fr.n7.stl.block.ast.scope.HierarchicalScope;
 import fr.n7.stl.block.ast.type.ArrayType;
 import fr.n7.stl.block.ast.type.Type;
 import fr.n7.stl.tam.ast.Fragment;
+import fr.n7.stl.tam.ast.Library;
 import fr.n7.stl.tam.ast.TAMFactory;
 
 /**
@@ -63,7 +65,12 @@ public class ArrayAllocation implements Expression {
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException( "Semantics getCode is undefined in ArrayAllocation.");
+		Fragment code = _factory.createFragment();
+		code.append(this.size.getCode(_factory)); // on charge le nb d'éléments du tableau
+		code.add(_factory.createLoadL(this.getType().length())); // on charge la taille d'un élément du tableau
+		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply)); // on charge nb_elements*taille_element=taille_tableau
+		code.add(Library.MAlloc);
+		return code;
 	}
 
 }

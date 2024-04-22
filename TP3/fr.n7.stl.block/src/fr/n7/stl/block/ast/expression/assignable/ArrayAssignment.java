@@ -5,7 +5,9 @@ package fr.n7.stl.block.ast.expression.assignable;
 
 import fr.n7.stl.block.ast.SemanticsUndefinedException;
 import fr.n7.stl.block.ast.expression.AbstractArray;
+import fr.n7.stl.block.ast.expression.BinaryOperator;
 import fr.n7.stl.block.ast.expression.Expression;
+import fr.n7.stl.block.ast.instruction.declaration.VariableDeclaration;
 import fr.n7.stl.tam.ast.Fragment;
 import fr.n7.stl.tam.ast.TAMFactory;
 
@@ -29,7 +31,18 @@ public class ArrayAssignment extends AbstractArray implements AssignableExpressi
 	 */
 	@Override
 	public Fragment getCode(TAMFactory _factory) {
-		throw new SemanticsUndefinedException("Semantics getCode undefined in ArrayAssignment.");
+		Fragment code = _factory.createFragment();
+		VariableDeclaration varDeclaration = ((VariableAssignment)this.array).getDeclaration();
+
+		code.add(_factory.createLoadA(varDeclaration.getRegister(), varDeclaration.getOffset()));
+		code.add(_factory.createLoadI(this.array.getType().length())); // charge l'adresse du tableau // 1 plutôt que length??
+		code.append(this.index.getCode(_factory)); // charger l'index
+		code.add(_factory.createLoadL(this.array.getType().length())); // charge la taille d'un éléménet
+		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Multiply));
+		code.add(TAMFactory.createBinaryOperator(BinaryOperator.Add));
+		code.add(_factory.createStoreI(this.array.getType().length()));
+		
+		return code;
 	}
 
 	
