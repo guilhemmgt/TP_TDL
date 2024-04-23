@@ -16,7 +16,11 @@ LOADL 1
 SUBR IMul
 SUBR IAdd
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@589838eb
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@246b179d
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;ArrayAccess: t[ 1 ]
 ;(t[ 1 ] == 6)
 ;print (t[ 1 ] == 6);

@@ -11,8 +11,8 @@ class Driver {
 			String tests_faux_prefixe = "faux-test-";
 			String tests_suffixe = ".txt";
 			
-			boolean lancer_tests_vrais = true;
-			boolean lancer_tests_faux = false;
+			boolean lancer_tests_vrais = false;
+			boolean lancer_tests_faux = true;
 			
 			 File[] dirFiles = new File(".").listFiles();
 			 

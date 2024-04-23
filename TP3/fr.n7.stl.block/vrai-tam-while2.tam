@@ -4,6 +4,7 @@ LOADL 0
 STORE (1) 0[SB]
 ;int b = a;
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1e397ed7
 LOAD (1) 0[SB]
 STORE (1) 1[SB]
@@ -16,11 +17,29 @@ LOADL 5
 SUBR ILss
 JUMPIF (0) endwhile26
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@56ac3a89
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@74a14482
+LOAD (1) 0[SB]
+STORE (1) 1[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1540e19d
+;(a < 5)
+;while
+while1
+LOAD (1) 0[SB]
+LOADL 5
+SUBR ILss
+JUMPIF (0) endwhile1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@677327b6
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ; b  = a;
 LOAD (1) 0[SB]
 LOADA 1[SB]
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@27c20538
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@14ae5a5
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(a + 1)
 ; a  = (a + 1);
 LOAD (1) 0[SB]
@@ -28,6 +47,7 @@ LOADL 1
 SUBR IAdd
 LOADA 0[SB]
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@72d818d1
 ;(b < 7)
 ;while
@@ -37,6 +57,17 @@ LOADL 7
 SUBR ILss
 JUMPIF (0) endwhile27
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6e06451e
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7f31245a
+;(b < 7)
+;while
+while2
+LOAD (1) 1[SB]
+LOADL 7
+SUBR ILss
+JUMPIF (0) endwhile2
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d6f6e28
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(b + 1)
 ; b  = (b + 1);
 LOAD (1) 1[SB]
@@ -45,19 +76,32 @@ SUBR IAdd
 LOADA 1[SB]
 STOREI (1)
 POP (0) 0
+<<<<<<< HEAD
 JUMP while27
 endwhile27
 POP (0) 0
 JUMP while26
 endwhile26
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@59494225
+=======
+JUMP while2
+endwhile2
+POP (0) 0
+JUMP while1
+endwhile1
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@135fbaa4
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(a == 5)
 ;((a == 5) && (b == 7))
 ;print ((a == 5) && (b == 7));
 LOAD (1) 0[SB]
 LOADL 5
 SUBR IEq
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6e1567f1
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@45ee12a7
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(b == 7)
 LOAD (1) 1[SB]
 LOADL 7

@@ -10,35 +10,55 @@ LOADL 1
 STORE (7) 0[SB]
 ;int pa = p.a;
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@47c62251
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@119d7047
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 LOAD (7) 0[SB]
 POP (0) 6
 POP (1) 0
 STORE (1) 7[SB]
 ;char pb = p.b;
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3e6fa38a
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@776ec8df
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 LOAD (7) 0[SB]
 POP (0) 5
 POP (1) 1
 STORE (1) 8[SB]
 ;< int, < int, int>> pc = p.c;
 PUSH 3
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@66a3ffec
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4eec7777
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 LOAD (7) 0[SB]
 POP (0) 2
 POP (3) 2
 STORE (3) 9[SB]
 ;int pc1 = (fst pc);
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@77caeb3e
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3b07d329
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(fst pc)
 LOAD (3) 9[SB]
 POP (0) 2
 STORE (1) 12[SB]
 ;int pc2 = (fst (sndpc));
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1e88b3c
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@41629346
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(sndpc)
 ;(fst (sndpc))
 LOAD (3) 9[SB]
@@ -47,7 +67,11 @@ POP (0) 1
 STORE (1) 13[SB]
 ;int pc3 = (snd(sndpc));
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@42d80b78
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@404b9385
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(sndpc)
 ;(snd(sndpc))
 LOAD (3) 9[SB]
@@ -56,19 +80,31 @@ POP (1) 1
 STORE (1) 14[SB]
 ;int pd = p.d;
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3bfdc050
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d311334
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 LOAD (7) 0[SB]
 POP (0) 1
 POP (1) 5
 STORE (1) 15[SB]
 ;boolean pe = p.e;
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1bce4f0a
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@682a0b20
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 LOAD (7) 0[SB]
 POP (0) 0
 POP (1) 6
 STORE (1) 16[SB]
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5e3a8624
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3d075dc0
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pa == 5)
 ;((pa == 5) && (pb == ']'))
 ;(((pa == 5) && (pb == ']')) && (pc1 == 1))
@@ -80,37 +116,61 @@ STORE (1) 16[SB]
 LOAD (1) 7[SB]
 LOADL 5
 SUBR IEq
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5c3bd550
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@214c265e
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pb == ']')
 LOAD (1) 8[SB]
 LOADL 93
 SUBR IEq
 SUBR BAnd
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@91161c7
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@448139f0
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pc1 == 1)
 LOAD (1) 12[SB]
 LOADL 1
 SUBR IEq
 SUBR BAnd
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@604ed9f0
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7cca494b
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pc2 == 2)
 LOAD (1) 13[SB]
 LOADL 2
 SUBR IEq
 SUBR BAnd
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6a4f787b
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ba4f24f
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pc3 == 3)
 LOAD (1) 14[SB]
 LOADL 3
 SUBR IEq
 SUBR BAnd
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@685cb137
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3b9a45b3
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pd == 6)
 LOAD (1) 15[SB]
 LOADL 6
 SUBR IEq
 SUBR BAnd
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6a41eaa2
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7699a589
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(pe == true)
 LOAD (1) 16[SB]
 LOADL 1

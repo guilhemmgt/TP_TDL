@@ -6,24 +6,40 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 9
 STORE (1) 1[SB]
+<<<<<<< HEAD
 ;(int *) ptr = fr.n7.stl.block.ast.expression.accessible.AddressAccess@4c70fda8;
 PUSH 1
 LOADA 1[SB]
 STORE (1) 2[SB]
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@224edc67
+=======
+;(int *) ptr = fr.n7.stl.block.ast.expression.accessible.AddressAccess@69d0a921;
+PUSH 1
+LOADA 1[SB]
+STORE (1) 2[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@446cdf90
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ; e  = (*ptr);
 LOAD (1) 2[SB]
 LOADI (1)
 LOADA 0[SB]
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@14acaea5
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@799f7e29
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(v == 9)
 ;((v == 9) && (e == 9))
 ;print ((v == 9) && (e == 9));
 LOAD (1) 1[SB]
 LOADL 9
 SUBR IEq
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@46d56d67
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4b85612c
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(e == 9)
 LOAD (1) 0[SB]
 LOADL 9

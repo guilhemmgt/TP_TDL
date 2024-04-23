@@ -6,24 +6,40 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 3
 STORE (1) 1[SB]
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4cf777e8
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@330bedb4
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ; a  = b;
 LOAD (1) 1[SB]
 LOADA 0[SB]
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2f686d1f
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@2503dbd3
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ; b  = a;
 LOAD (1) 0[SB]
 LOADA 1[SB]
 STOREI (1)
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3fee9989
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4b67cf4d
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(a == 3)
 ;((a == 3) && (b == 3))
 ;print ((a == 3) && (b == 3));
 LOAD (1) 0[SB]
 LOADL 3
 SUBR IEq
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@73ad2d6
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ea987ac
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(b == 3)
 LOAD (1) 1[SB]
 LOADL 3

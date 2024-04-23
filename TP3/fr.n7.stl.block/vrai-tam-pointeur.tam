@@ -2,24 +2,40 @@
 PUSH 1
 LOADL 3
 STORE (1) 0[SB]
+<<<<<<< HEAD
 ;(int *) px = fr.n7.stl.block.ast.expression.accessible.AddressAccess@2b98378d;
+=======
+;(int *) px = fr.n7.stl.block.ast.expression.accessible.AddressAccess@25f38edc;
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 PUSH 1
 LOADA 0[SB]
 STORE (1) 1[SB]
 ;int y = (*px);
 PUSH 1
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@475530b9
 LOAD (1) 1[SB]
 LOADI (1)
 STORE (1) 2[SB]
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1d057a39
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1a86f2f1
+LOAD (1) 1[SB]
+LOADI (1)
+STORE (1) 2[SB]
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@3eb07fd3
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(x == 3)
 ;((x == 3) && (y == 3))
 ;print ((x == 3) && (y == 3));
 LOAD (1) 0[SB]
 LOADL 3
 SUBR IEq
+<<<<<<< HEAD
 ;fr.n7.stl.block.ast.expression.accessible.VariableAccess@26be92ad
+=======
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@506c589e
+>>>>>>> d5fd7c7591a0055ce4071705f3eb014f55d77c74
 ;(y == 3)
 LOAD (1) 2[SB]
 LOADL 3
