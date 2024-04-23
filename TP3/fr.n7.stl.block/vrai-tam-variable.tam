@@ -6,23 +6,23 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 4
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d4b1c02
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5700d6b1
 ;(j * i)
 ; i  = (j * i);
 LOAD (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6093dd95
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6fd02e5
 LOAD (1) 0[SB]
 SUBR IMul
 LOADA 0[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5622fdf
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5bcab519
 ;(i == 8)
 ;((i == 8) && (j == 4))
 ;print ((i == 8) && (j == 4));
 LOAD (1) 0[SB]
 LOADL 8
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4883b407
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@e45f292
 ;(j == 4)
 LOAD (1) 1[SB]
 LOADL 4

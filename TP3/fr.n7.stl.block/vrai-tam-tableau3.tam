@@ -21,7 +21,7 @@ SUBR IAdd
 STOREI (4)
 ;int a = (fst t[ 3 ]);
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@14acaea5
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@548e7350
 ;ArrayAccess: t[ 3 ]
 ;(fst t[ 3 ])
 LOAD (1) 0[SB]
@@ -34,7 +34,7 @@ POP (0) 3
 STORE (1) 1[SB]
 ;char b = (fst (fst (sndt[ 3 ])));
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@46d56d67
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1a968a59
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
 ;(fst (sndt[ 3 ]))
@@ -51,7 +51,7 @@ POP (0) 1
 STORE (1) 2[SB]
 ;int c = (snd(fst (sndt[ 3 ])));
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@d8355a8
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4667ae56
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
 ;(fst (sndt[ 3 ]))
@@ -68,7 +68,7 @@ POP (1) 1
 STORE (1) 3[SB]
 ;char d = (snd(sndt[ 3 ]));
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@59fa1d9b
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@77cd7a0
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
 ;(snd(sndt[ 3 ]))
@@ -81,7 +81,7 @@ LOADI (4)
 POP (3) 1
 POP (1) 2
 STORE (1) 4[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@28d25987
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@204f30ec
 ;(a == 1)
 ;((a == 1) && (b == 'a'))
 ;(((a == 1) && (b == 'a')) && (c == 2))
@@ -90,19 +90,19 @@ STORE (1) 4[SB]
 LOAD (1) 1[SB]
 LOADL 1
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4501b7af
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@e25b2fe
 ;(b == 'a')
 LOAD (1) 2[SB]
 LOADL 97
 SUBR IEq
 SUBR BAnd
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@523884b2
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@754ba872
 ;(c == 2)
 LOAD (1) 3[SB]
 LOADL 2
 SUBR IEq
 SUBR BAnd
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5b275dab
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@146ba0ac
 ;(d == 'b')
 LOAD (1) 4[SB]
 LOADL 98

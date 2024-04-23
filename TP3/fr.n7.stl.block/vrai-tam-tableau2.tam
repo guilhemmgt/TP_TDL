@@ -17,7 +17,7 @@ LOADL 2
 SUBR IMul
 SUBR IAdd
 STOREI (2)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4c70fda8
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@53b32d7
 ;ArrayAccess: t[ 3 ]
 ;(fst t[ 3 ])
 ;((fst t[ 3 ]) == 5)
@@ -32,7 +32,7 @@ LOADI (2)
 POP (0) 1
 LOADL 5
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@224edc67
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5442a311
 ;ArrayAccess: t[ 3 ]
 ;(sndt[ 3 ])
 ;((sndt[ 3 ]) == 'e')
