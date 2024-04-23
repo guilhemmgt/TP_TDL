@@ -6,7 +6,7 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 3
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1810399e
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@50040f0c
 ;(j * 3)
 ;((j * 3) + (1 / 2))
 ; i  = ((j * 3) + (1 / 2));
@@ -22,7 +22,7 @@ LOADA 0[SB]
 STOREI (1)
 ;int k = (c + 1);
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.ConstantAccess@32d992b2
+;fr.n7.stl.block.ast.expression.accessible.ConstantAccess@2dda6444
 ;(c + 1)
 LOADL 5
 LOADL 1
@@ -34,7 +34,7 @@ LOADL 97
 STORE (1) 3[SB]
 ;boolean vrai = (((k == 6) || (1 != 3)) && (a == 'a'));
 PUSH 1
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@215be6bb
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5e9f23b4
 ;(k == 6)
 ;((k == 6) || (1 != 3))
 ;(((k == 6) || (1 != 3)) && (a == 'a'))
@@ -46,14 +46,14 @@ LOADL 1
 LOADL 3
 SUBR INeq
 SUBR BOr
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4439f31e
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4783da3f
 ;(a == 'a')
 LOAD (1) 3[SB]
 LOADL 97
 SUBR IEq
 SUBR BAnd
 STORE (1) 4[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5dfcfece
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@378fd1ac
 ;print vrai;
 LOAD (1) 4[SB]
 SUBR BOut

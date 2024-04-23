@@ -5,10 +5,10 @@ STORE (1) 0[SB]
 ;< int, int> p = < 2, i>;
 PUSH 2
 LOADL 2
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@174d20a
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@52cc8049
 LOAD (1) 0[SB]
 STORE (2) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@66d2e7d9
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5b6f7412
 ;(sndp)
 ; p  = < (sndp), 3>;
 LOAD (2) 1[SB]
@@ -16,7 +16,7 @@ POP (1) 1
 LOADL 3
 LOADA 1[SB]
 STOREI (2)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1efbd816
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@27973e9b
 ;(fst p)
 ;((fst p) == 5)
 ;(((fst p) == 5) && ((sndp) == 3))
@@ -25,7 +25,7 @@ LOAD (2) 1[SB]
 POP (0) 1
 LOADL 5
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6a2bcfcb
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@312b1dae
 ;(sndp)
 ;((sndp) == 3)
 LOAD (2) 1[SB]

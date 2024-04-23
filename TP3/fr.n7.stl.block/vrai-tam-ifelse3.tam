@@ -6,7 +6,7 @@ STORE (1) 0[SB]
 PUSH 1
 LOADL 4
 STORE (1) 1[SB]
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@548b7f67
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@579bb367
 ;(b == (- 1))
 ;if else
 LOAD (1) 1[SB]
@@ -14,12 +14,12 @@ LOAD (1) 1[SB]
 LOADL 1
 SUBR INeg
 SUBR IEq
-JUMPIF (0) else15
+JUMPIF (0) else19
 ; a  = 1;
 LOADL 1
 LOADA 0[SB]
 STOREI (1)
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@7ac7a4e4
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@1de0aca6
 ;(b == (- 1))
 ;if
 LOAD (1) 1[SB]
@@ -27,56 +27,56 @@ LOAD (1) 1[SB]
 LOADL 1
 SUBR INeg
 SUBR IEq
-JUMPIF (0) endif16
+JUMPIF (0) endif20
 ; a  = 2;
 LOADL 2
 LOADA 0[SB]
 STOREI (1)
 POP (0) 0
-endif16
+endif20
 POP (0) 0
-JUMP endif15
-else15
+JUMP endif19
+else19
 ; a  = 4;
 LOADL 4
 LOADA 0[SB]
 STOREI (1)
 ;if
 LOADL 0
-JUMPIF (0) endif17
+JUMPIF (0) endif21
 ;if
 LOADL 1
-JUMPIF (0) endif18
+JUMPIF (0) endif22
 POP (0) 0
-endif18
+endif22
 POP (0) 0
-endif17
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@6d78f375
+endif21
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@255316f2
 ;(a == 4)
 ;if else
 LOAD (1) 0[SB]
 LOADL 4
 SUBR IEq
-JUMPIF (0) else19
+JUMPIF (0) else23
 ; a  = 3;
 LOADL 3
 LOADA 0[SB]
 STOREI (1)
 POP (0) 0
-JUMP endif19
-else19
+JUMP endif23
+else23
+POP (0) 0
+endif23
 POP (0) 0
 endif19
-POP (0) 0
-endif15
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@50c87b21
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@41906a77
 ;(a == 3)
 ;((a == 3) && (b == 4))
 ;print ((a == 3) && (b == 4));
 LOAD (1) 0[SB]
 LOADL 3
 SUBR IEq
-;fr.n7.stl.block.ast.expression.accessible.VariableAccess@5f375618
+;fr.n7.stl.block.ast.expression.accessible.VariableAccess@4b9af9a9
 ;(b == 4)
 LOAD (1) 1[SB]
 LOADL 4
